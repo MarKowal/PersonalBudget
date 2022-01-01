@@ -28,6 +28,7 @@ public:
     void registrationOfUser();
     void printAllUsers();
     int logInUser();
+    int getIdOfLoggedUser();
 
 
 };

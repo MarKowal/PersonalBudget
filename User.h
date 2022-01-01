@@ -10,7 +10,8 @@ class User {
     string name, surname, login, password;
 
 public:
-    User(int idUser = 0, string name = "", string surname = "", string login = "", string password = "") {
+    User(int idUser = 0, string name = "", string surname = "",
+         string login = "", string password = "") {
         this -> idUser = idUser;
         this -> name = name;
         this -> surname = surname;

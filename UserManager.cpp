@@ -91,4 +91,7 @@ int UserManager::logInUser() {
     return 0;
 }
 
+int UserManager::getIdOfLoggedUser() {
+    return idOfLoggedUser;
+}
 
