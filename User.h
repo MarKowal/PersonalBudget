@@ -16,8 +16,6 @@ public:
         this -> surname = surname;
         this -> login = login;
         this -> password = password;
-        this -> idUser = idUser;
-        this -> idUser = idUser;
     }
 
     void setIdUser(int newIdUser);
