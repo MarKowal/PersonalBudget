@@ -14,6 +14,7 @@ using namespace std;
 class UserManager {
     vector <User> users;
     int idOfLoggedUser;
+
     User setDataOfNewUser();
     int getIdOfNewUser();
     bool ifLoginIsAlreadyUsed(string login);
@@ -26,7 +27,7 @@ public:
 
     void registrationOfUser();
     void printAllUsers();
-
+    int logInUser();
 
 
 };

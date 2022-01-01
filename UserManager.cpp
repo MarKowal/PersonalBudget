@@ -14,18 +14,18 @@ User UserManager::setDataOfNewUser() {
     user.setIdUser(getIdOfNewUser());
 
     cout<<"Type your name: ";
-    user.setName(Supportingmethods::uploadLine());
+    user.setName(SupportingMethods::uploadLine());
 
     cout<<"Type your surname: ";
-    user.setSurname(Supportingmethods::uploadLine());
+    user.setSurname(SupportingMethods::uploadLine());
 
     do {
         cout<<"Type your login: ";
-        user.setLogin(Supportingmethods::uploadLine());
+        user.setLogin(SupportingMethods::uploadLine());
     } while (ifLoginIsAlreadyUsed(user.getLogin()) == true);
 
     cout<<"Type your password: ";
-    user.setPassword(Supportingmethods::uploadLine());
+    user.setPassword(SupportingMethods::uploadLine());
 
     return user;
 };
@@ -56,6 +56,39 @@ void UserManager::printAllUsers() {
         cout<<users[i].getLogin()<<endl;
         cout<<users[i].getPassword()<<endl;
     }
+}
+
+int UserManager::logInUser() {
+    User user;
+    string login = "";
+    string password = "";
+
+    cout<<"Type your login: ";
+    login = SupportingMethods::uploadLine();
+
+    vector <User>::iterator itr = users.begin();
+    while (itr != users.end()) {
+        if (itr -> getLogin() == login) {
+            for (int numberOfAttempts = 3; numberOfAttempts > 0; numberOfAttempts--) {
+                cout << "Type your password. Attempts left " << numberOfAttempts << ": ";
+                password = SupportingMethods::uploadLine();
+
+                if (itr -> getPassword() == password) {
+                    cout << endl << "You have sign in to the program." << endl << endl;
+                    idOfLoggedUser = itr -> getIdUser();
+                    system("pause");
+                    return idOfLoggedUser;
+                }
+            }
+            cout <<"Access password typed 3 times wrong."<<endl;
+            system("pause");
+            return 0;
+        }
+        itr++;
+    }
+    cout <<"There is no user with such login"<< endl << endl;
+    system("pause");
+    return 0;
 }
 
 
