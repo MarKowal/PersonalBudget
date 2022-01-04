@@ -7,9 +7,8 @@ using namespace std;
 
 class SupportingMethods {
 public:
+    SupportingMethods(){};
     static string uploadLine();
-
-
 
 };
 
