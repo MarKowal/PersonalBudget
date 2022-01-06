@@ -18,12 +18,9 @@ int main()
     personalBudget.addIncome();
     personalBudget.printAllIncomes();*/
 
-    IncomeManager income(1);
-    income.addIncome(14);
-    income.addIncome(78);
-    income.addIncome(14);
-
+    IncomeManager income(14);
     income.printAllIncomes();
+
 
   /* FinancialData income = {2, 3, "1997-12-17", "salary", 3400};
     IncomesFile incomesFile;

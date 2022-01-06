@@ -1,5 +1,9 @@
 #include "IncomeManager.h"
 
+IncomeManager::IncomeManager(int idOfLoggedUser){
+    incomes = incomesFile.loadDataFromIncomesFile(idOfLoggedUser);
+}
+
 void IncomeManager::addIncome(int idOfLoggedUser) {
     FinancialData income = setDataOfNewIncome(idOfLoggedUser);
     incomes.push_back(income);
@@ -11,7 +15,7 @@ void IncomeManager::addIncome(int idOfLoggedUser) {
 FinancialData IncomeManager::setDataOfNewIncome(int idOfLoggedUser) {
     FinancialData income;
 
-    income.setIdFinancialData(getIdOfNewIncome());
+    income.setIdFinancialData(incomesFile.getIdOfLastIncome()+1);
     income.setIdUser(idOfLoggedUser);
     income.setDate(getNewDate());
     cout<<"Type description of the income: "<<endl;
@@ -23,14 +27,14 @@ FinancialData IncomeManager::setDataOfNewIncome(int idOfLoggedUser) {
 
     return income;
 }
-
+/*
 int IncomeManager::getIdOfNewIncome() {
     if (incomes.empty() == true) {
         return 1;
     } else {
         return incomes.back().getIdFinancialData()+1;
     }
-}
+}*/
 
 string IncomeManager::getNewDate() {
     string date, year, month, day;

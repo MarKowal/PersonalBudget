@@ -13,7 +13,7 @@ using namespace std;
 
 class IncomesFile : public XmlFile {
     CMarkup xml;
-    int idOfLastIncome; //czy ta zmienna ma sens?
+    int idOfLastIncome;
 
 
 public:
@@ -21,8 +21,8 @@ public:
     this -> idOfLastIncome = idOfLastIncome;
     }
     void addIncomeToIncomesFile(FinancialData income);
-    int getIdOfLastIncome(); //czy ta metoda ma sens?
-    vector<FinancialData> loadDataFromIncomesFile();
+    int getIdOfLastIncome();
+    vector<FinancialData> loadDataFromIncomesFile(int idOfLoggedUser);
 
 
 };

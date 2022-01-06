@@ -22,7 +22,7 @@ class IncomeManager {
 
 
 public:
-   IncomeManager(int idOfLoggedUser){};
+   IncomeManager(int idOfLoggedUser);
    void addIncome(int idOfLoggedUser);
    void printAllIncomes();
 
