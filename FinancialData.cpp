@@ -20,8 +20,8 @@ void FinancialData::setDescription(string newDescription) {
     description = newDescription;
 }
 
-void FinancialData::setAmount(int newAmount) {
-    if (newAmount >= 0) {
+void FinancialData::setAmount(double newAmount) {
+    if (newAmount > 0) {
         amount = newAmount;
     }
 }
@@ -41,6 +41,6 @@ string FinancialData::getDescription() {
     return description;
 }
 
-int FinancialData::getAmount() {
+double FinancialData::getAmount() {
     return amount;
 }

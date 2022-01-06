@@ -7,6 +7,7 @@ IncomeManager::IncomeManager(int idOfLoggedUser){
 void IncomeManager::addIncome(int idOfLoggedUser) {
     FinancialData income = setDataOfNewIncome(idOfLoggedUser);
     incomes.push_back(income);
+    cout<<"//from vector income.getAmount() = "<<income.getAmount()<<endl;
     cout << endl << "//Income saved in vector." << endl << endl;
     incomesFile.addIncomeToIncomesFile(income);
     system("pause");
@@ -21,20 +22,10 @@ FinancialData IncomeManager::setDataOfNewIncome(int idOfLoggedUser) {
     cout<<"Type description of the income: "<<endl;
     income.setDescription(SupportingMethods::uploadLine());
     cout<<"Type amount of the income: ";
-    int amount = 0; //trzeba zamienic na funkcje pobierajaca i zamieniajaca przecinek na kropke
-    cin>>amount;
-    income.setAmount(amount);
+    income.setAmount(stod(SupportingMethods::changeCommaToDot(SupportingMethods::uploadLine())));
 
     return income;
 }
-/*
-int IncomeManager::getIdOfNewIncome() {
-    if (incomes.empty() == true) {
-        return 1;
-    } else {
-        return incomes.back().getIdFinancialData()+1;
-    }
-}*/
 
 string IncomeManager::getNewDate() {
     string date, year, month, day;

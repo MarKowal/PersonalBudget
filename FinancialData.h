@@ -10,11 +10,11 @@ class FinancialData {
     int idUser;
     string date;
     string description;
-    int amount;
+    double amount;
 
 public:
    FinancialData(int idFinancialData = 0, int idUser = 0, string date = "",
-                 string description = "", int amount = 0){
+                 string description = "", double amount = 0){
        this -> idFinancialData = idFinancialData;
        this -> idUser = idUser;
        this -> date = date;
@@ -26,13 +26,13 @@ public:
     void setIdUser(int newIdUser);
     void setDate(string newDate);
     void setDescription(string newDescription);
-    void setAmount(int newAmount);
+    void setAmount(double newAmount);
 
     int getIdFinancialData();
     int getIdUser();
     string getDate();
     string getDescription();
-    int getAmount();
+    double getAmount();
 };
 
 #endif

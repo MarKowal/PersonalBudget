@@ -12,7 +12,7 @@ void IncomesFile::addIncomeToIncomesFile(FinancialData income){
     xml.AddElem("idUser", income.getIdUser());
     xml.AddElem("date", income.getDate());
     xml.AddElem("description", income.getDescription());
-    xml.AddElem("amount", income.getAmount());
+    xml.AddElem("amount", to_string(income.getAmount()));
     xml.Save(getNAME_OF_FILE());
     cout<<"//Income saved in xml file."<<endl;
 }
@@ -48,7 +48,7 @@ vector<FinancialData> IncomesFile::loadDataFromIncomesFile(int idOfLoggedUser) {
 
         xml.FindElem("amount");
         MCD_STR stringData5 = xml.GetData();
-        income.setAmount(atoi(MCD_2PCSZ(stringData5)));
+        income.setAmount(stod(MCD_2PCSZ(stringData5)));
 
         if (idOfLoggedUser == income.getIdUser()) {
             incomes.push_back(income);

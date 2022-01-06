@@ -6,9 +6,11 @@
 using namespace std;
 
 class SupportingMethods {
+
 public:
     SupportingMethods(){};
     static string uploadLine();
+    static string changeCommaToDot(string number);
 
 };
 

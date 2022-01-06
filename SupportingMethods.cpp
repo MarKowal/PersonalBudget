@@ -7,3 +7,12 @@
     getline(cin, input);
     return input;
 }
+
+string SupportingMethods::changeCommaToDot(string number) {
+    for (int i=0; i<number.length(); i++) {
+        if (number[i] == ',') {
+            number[i] = '.';
+        }
+    }
+    return number;
+}

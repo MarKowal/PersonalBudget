@@ -19,13 +19,10 @@ class IncomeManager {
     int getIdOfNewIncome();
     string getNewDate();
 
-
-
 public:
    IncomeManager(int idOfLoggedUser);
    void addIncome(int idOfLoggedUser);
    void printAllIncomes();
-
 
 };
 
