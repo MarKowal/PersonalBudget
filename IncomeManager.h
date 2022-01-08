@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <ctime>
 
 #include "FinancialData.h"
 #include "SupportingMethods.h"
@@ -18,6 +19,12 @@ class IncomeManager {
     FinancialData setDataOfNewIncome(int idOfLoggedUser);
     int getIdOfNewIncome();
     string getNewDate();
+    string getDateFromUser();
+    bool checkYearFromUser(string timeInfo);
+    bool checkMonthFromUser(string timeInfo);
+    bool checkDayFromUser(string timeInfo, string month, string year);
+    bool checkIfLeapYear(int year);
+
 
 public:
    IncomeManager(int idOfLoggedUser);
