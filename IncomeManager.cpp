@@ -1,7 +1,7 @@
 #include "IncomeManager.h"
 
-IncomeManager::IncomeManager(int idOfLoggedUser){
-    incomes = incomesFile.loadDataFromIncomesFile(idOfLoggedUser);
+IncomeManager::IncomeManager(int idOfLoggedUser) {
+    incomes = incomesFile.loadIncomeFromFile(idOfLoggedUser);
 }
 
 void IncomeManager::addIncome(int idOfLoggedUser) {
@@ -9,14 +9,14 @@ void IncomeManager::addIncome(int idOfLoggedUser) {
     incomes.push_back(income);
     cout<<"//from vector income.getAmount() = "<<income.getAmount()<<endl;
     cout << endl << "//Income saved in vector." << endl << endl;
-    incomesFile.addIncomeToIncomesFile(income);
+    incomesFile.addIncomeToFile(income);
     system("pause");
 }
 
 FinancialData IncomeManager::setDataOfNewIncome(int idOfLoggedUser) {
     FinancialData income;
 
-    income.setIdFinancialData(incomesFile.getIdOfLastIncome()+1);
+    income.setIdFinancialData(getIdOfNewIncome());
     income.setIdUser(idOfLoggedUser);
     income.setDate(getNewDate());
     cout<<"Type description of the income: "<<endl;
@@ -26,6 +26,18 @@ FinancialData IncomeManager::setDataOfNewIncome(int idOfLoggedUser) {
 
     return income;
 }
+
+int IncomeManager::getIdOfNewIncome() {
+    if (incomes.empty() == true) {
+        return incomesFile.getIdOfLastIncome()+1;
+    } else {
+        if(incomesFile.getIdOfLastIncome() > incomes.back().getIdFinancialData()) {
+            return incomesFile.getIdOfLastIncome()+1;
+        } else {
+            return incomes.back().getIdFinancialData()+1;
+        }
+    }
+};
 
 string IncomeManager::getNewDate() {
     string dateFromUser, year, month, day;
@@ -72,7 +84,7 @@ string IncomeManager::getDateFromUser() {
         year = timeInfo;
         timeInfo = "";
     } else {
-        return "wrong date";
+        return "error";
     }
 
     cout<<"Month of the income: ";
@@ -81,7 +93,7 @@ string IncomeManager::getDateFromUser() {
         month = timeInfo;
         timeInfo = "";
     } else {
-       return "wrong date";
+        return "error";
     }
     if (month.length()<2) {
         month = "0" + month;
@@ -93,7 +105,7 @@ string IncomeManager::getDateFromUser() {
         day = timeInfo;
         timeInfo = "";
     } else {
-        return "wrong date";
+        return "error";
     }
     if (day.length()<2) {
         day = "0" + day;
@@ -107,8 +119,7 @@ string IncomeManager::getDateFromUser() {
 bool IncomeManager::checkYearFromUser(string timeInfo) {
     if (stoi(timeInfo) >= 2000 && stoi(timeInfo) <= stoi(SupportingMethods::getPresentYear())) {
         return true;
-    }
-    else {
+    } else {
         cout<<"Wrong year. Should be from 2000 to "<<SupportingMethods::getPresentYear()<<"."<<endl;
         return false;
     }
@@ -117,8 +128,7 @@ bool IncomeManager::checkYearFromUser(string timeInfo) {
 bool IncomeManager::checkMonthFromUser(string timeInfo) {
     if (stoi(timeInfo) >= 1 && stoi(timeInfo) <= 12) {
         return true;
-    }
-    else {
+    } else {
         cout<<"Wrong month. Should be from 1 to 12."<<endl;
         return false;
     }

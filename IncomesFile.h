@@ -17,12 +17,11 @@ class IncomesFile : public XmlFile {
 
 public:
     IncomesFile(string NAME_OF_FILE = "incomes.xml", int idOfLastIncome = 0) : XmlFile("incomes.xml"){
-    this -> idOfLastIncome = idOfLastIncome;
+        this -> idOfLastIncome = idOfLastIncome;
     }
-    void addIncomeToIncomesFile(FinancialData income);
+    void addIncomeToFile(FinancialData income);
     int getIdOfLastIncome();
-    vector<FinancialData> loadDataFromIncomesFile(int idOfLoggedUser);
-
+    vector<FinancialData> loadIncomeFromFile(int idOfLoggedUser);
 
 };
 

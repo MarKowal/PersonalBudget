@@ -31,10 +31,9 @@ User UserManager::setDataOfNewUser() {
 };
 
 int UserManager::getIdOfNewUser() {
-    if (users.empty() == true){
+    if (users.empty() == true) {
         return 1;
-    }
-    else {
+    } else {
         return users.back().getIdUser()+1;
     }
 };
@@ -45,7 +44,8 @@ bool UserManager::ifLoginIsAlreadyUsed(string login) {
             cout << endl << "This login is reserved by other user." << endl;
             return true;
         }
-    } return false;
+    }
+    return false;
 };
 
 void UserManager::printAllUsers() {
@@ -86,7 +86,7 @@ int UserManager::logInUser() {
         }
         itr++;
     }
-    cout <<"There is no user with such login"<< endl << endl;
+    cout <<"There is no user with such login. Access denied."<< endl << endl;
     system("pause");
     return 0;
 }
