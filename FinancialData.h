@@ -10,7 +10,7 @@ class FinancialData {
     int idUser;
     string date;
     string description;
-    double amount;
+    double amount; //zmienic na wiekszy typ bo zaokragla tysiace
 
 public:
    FinancialData(int idFinancialData = 0, int idUser = 0, string date = "",

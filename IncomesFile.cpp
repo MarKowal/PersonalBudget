@@ -17,7 +17,7 @@ void IncomesFile::addIncomeToFile(FinancialData income) {
     cout<<"//Income saved in xml file."<<endl;
 }
 
-vector<FinancialData> IncomesFile::loadIncomeFromFile(int idOfLoggedUser) {
+vector<FinancialData> IncomesFile::loadIncomesFromFile(int idOfLoggedUser) {
     vector<FinancialData> incomes;
     FinancialData income;
 

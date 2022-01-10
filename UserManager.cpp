@@ -1,10 +1,16 @@
 #include "UserManager.h"
 
+
+UserManager::UserManager(){
+        idOfLoggedUser = 0;
+        users = usersFile.loadUsersFromFile();
+    };
+
 void UserManager::registrationOfUser() {
     User user = setDataOfNewUser();
     users.push_back(user);
 
-    //plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
+    usersFile.addUserToFile(user);
     cout << endl << "New account is set correctly." << endl << endl;
     system("pause");
 };

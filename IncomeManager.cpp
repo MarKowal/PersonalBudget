@@ -1,7 +1,7 @@
 #include "IncomeManager.h"
 
 IncomeManager::IncomeManager(int idOfLoggedUser) {
-    incomes = incomesFile.loadIncomeFromFile(idOfLoggedUser);
+    incomes = incomesFile.loadIncomesFromFile(idOfLoggedUser);
 }
 
 void IncomeManager::addIncome(int idOfLoggedUser) {
