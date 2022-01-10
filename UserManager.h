@@ -31,6 +31,7 @@ public:
     void printAllUsers();
     int logInUser();
     int getIdOfLoggedUser();
+    int logOutUser();
 
 
 };

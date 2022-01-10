@@ -101,3 +101,8 @@ int UserManager::getIdOfLoggedUser() {
     return idOfLoggedUser;
 }
 
+int UserManager::logOutUser() {
+    idOfLoggedUser = 0;
+    return idOfLoggedUser;
+}
+
