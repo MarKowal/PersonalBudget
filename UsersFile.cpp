@@ -27,24 +27,24 @@ vector<User> UsersFile::loadUsersFromFile() {
         xml.IntoElem();
         while(xml.FindElem("idUser") ) {
 
-            MCD_STR stringData1 = xml.GetData();
-            user.setIdUser(atoi(MCD_2PCSZ(stringData1)));
+            MCD_STR temporaryData1 = xml.GetData();
+            user.setIdUser(atoi(MCD_2PCSZ(temporaryData1)));
 
             xml.FindElem("name");
-            MCD_STR stringData2 = xml.GetData();
-            user.setName(stringData2);
+            MCD_STR temporaryData2 = xml.GetData();
+            user.setName(temporaryData2);
 
             xml.FindElem("surname");
-            MCD_STR stringData3 = xml.GetData();
-            user.setSurname(stringData3);
+            MCD_STR temporaryData3 = xml.GetData();
+            user.setSurname(temporaryData3);
 
             xml.FindElem("login");
-            MCD_STR stringData4 = xml.GetData();
-            user.setLogin(stringData4);
+            MCD_STR temporaryData4 = xml.GetData();
+            user.setLogin(temporaryData4);
 
             xml.FindElem("password");
-            MCD_STR stringData5 = xml.GetData();
-            user.setPassword(stringData5);
+            MCD_STR temporaryData5 = xml.GetData();
+            user.setPassword(temporaryData5);
 
             users.push_back(user);
             cout<<"//User loaded to vector from XML file"<<endl;
@@ -53,4 +53,23 @@ vector<User> UsersFile::loadUsersFromFile() {
     return users;
 }
 
+void UsersFile::changeLoggedUserPasswordInFile(string oldPassword, string newPassword) {
+    cout<<"//oldPassword on UsersFile = "<<oldPassword<<endl;
+    cout<<"//newPassword on UsersFile = "<<newPassword<<endl;
+
+    string tempPasswordInfo;
+
+    bool uploadFile = xml.Load(getNAME_OF_FILE());
+    xml.FindElem();
+    xml.IntoElem();
+    while(xml.FindElem("password") ) {
+
+        MCD_STR temporaryData = xml.GetData();
+        tempPasswordInfo = MCD_2PCSZ(temporaryData);
+        if (tempPasswordInfo == oldPassword) {
+            xml.SetData(newPassword);
+        }
+        xml.Save(getNAME_OF_FILE());
+    }
+}
 

@@ -17,10 +17,8 @@ int main()
     //personalBudget.registrationOfUser();
     personalBudget.printAllUsers();
     personalBudget.logInUser();
-    personalBudget.printAllIncomes();
-    personalBudget.logOutUser();
-    personalBudget.logInUser();
-    personalBudget.printAllIncomes();
+    personalBudget.changeLoggedUserPassword();
+    personalBudget.printAllUsers();
 
 
     return 0;

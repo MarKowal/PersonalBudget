@@ -10,7 +10,6 @@
 
 
 /*
-2. wylogowanie uzytkownika
 3. zmiana hasla uzytkownika
 */
 using namespace std;
@@ -32,8 +31,7 @@ public:
     int logInUser();
     int getIdOfLoggedUser();
     int logOutUser();
-
-
+    void changeLoggedUserPassword();
 };
 
 #endif
