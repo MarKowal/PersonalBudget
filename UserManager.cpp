@@ -1,10 +1,16 @@
 #include "UserManager.h"
 
+
+UserManager::UserManager() {
+    idOfLoggedUser = 0;
+    users = usersFile.loadUsersFromFile();
+};
+
 void UserManager::registrationOfUser() {
     User user = setDataOfNewUser();
     users.push_back(user);
 
-    //plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
+    usersFile.addUserToFile(user);
     cout << endl << "New account is set correctly." << endl << endl;
     system("pause");
 };
@@ -93,5 +99,29 @@ int UserManager::logInUser() {
 
 int UserManager::getIdOfLoggedUser() {
     return idOfLoggedUser;
+}
+
+int UserManager::logOutUser() {
+    idOfLoggedUser = 0;
+    return idOfLoggedUser;
+}
+
+void UserManager::changeLoggedUserPassword() {
+    string oldPassword;
+    string newPassword;
+    cout<<"Type new password: ";
+    cin>>newPassword;
+
+    for (vector<User>::iterator itr = users.begin(); itr != users.end(); itr++) {
+        if (itr -> getIdUser() == getIdOfLoggedUser()) {
+            oldPassword = itr -> getPassword();
+            itr -> setPassword(newPassword);
+            cout<<"Password has been changed."<<endl;
+            system("pause");
+        }
+
+    }
+    cout<<"//oldPassword on UsMen = "<<oldPassword<<endl;
+    usersFile.changeLoggedUserPasswordInFile(oldPassword, newPassword);
 }
 

@@ -6,14 +6,18 @@
 
 #include "User.h"
 #include "SupportingMethods.h"
+#include "UsersFile.h"
 
 
-
+/*
+3. zmiana hasla uzytkownika
+*/
 using namespace std;
 
 class UserManager {
     vector <User> users;
     int idOfLoggedUser;
+    UsersFile usersFile;
 
     User setDataOfNewUser();
     int getIdOfNewUser();
@@ -21,16 +25,13 @@ class UserManager {
 
 
 public:
-    UserManager(){
-        idOfLoggedUser = 0;
-    };
-
+    UserManager();
     void registrationOfUser();
     void printAllUsers();
     int logInUser();
     int getIdOfLoggedUser();
-
-
+    int logOutUser();
+    void changeLoggedUserPassword();
 };
 
 #endif
