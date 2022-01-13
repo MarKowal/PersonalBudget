@@ -4,21 +4,20 @@
 #include "IncomeManager.h"
 #include "IncomesFile.h"
 #include "UsersFile.h"
-
-
+#include "ExpenseManager.h"
+#include "ExpensesFile.h"
 
 using namespace std;
 
 int main()
 {
-
     PersonalBudget personalBudget;
 
-    //personalBudget.registrationOfUser();
     personalBudget.printAllUsers();
     personalBudget.logInUser();
-    personalBudget.changeLoggedUserPassword();
-    personalBudget.printAllUsers();
+    personalBudget.addExpense();
+    personalBudget.addExpense();
+    personalBudget.printAllExpenses();
 
 
     return 0;

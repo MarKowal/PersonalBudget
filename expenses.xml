@@ -1,0 +1,22 @@
+<EXPENSES>
+<idFinancialData>1</idFinancialData>
+<idUser>2</idUser>
+<date>2022-01-13</date>
+<description>bread</description>
+<amount>4.590000</amount>
+<idFinancialData>2</idFinancialData>
+<idUser>2</idUser>
+<date>2022-01-30</date>
+<description>butter</description>
+<amount>8.920000</amount>
+<idFinancialData>3</idFinancialData>
+<idUser>1</idUser>
+<date>2022-01-13</date>
+<description>new CDs</description>
+<amount>45.790000</amount>
+<idFinancialData>4</idFinancialData>
+<idUser>1</idUser>
+<date>2021-12-01</date>
+<description>cinema</description>
+<amount>10.100000</amount>
+</EXPENSES>

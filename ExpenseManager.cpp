@@ -1,56 +1,56 @@
-#include "IncomeManager.h"
+#include "ExpenseManager.h"
 
-IncomeManager::IncomeManager(int idOfLoggedUser) {
-    incomes = incomesFile.loadIncomesFromFile(idOfLoggedUser);
+ExpenseManager::ExpenseManager(int idOfLoggedUser) {
+    expenses = expensesFile.loadExpensesFromFile(idOfLoggedUser);
 }
 
-void IncomeManager::addIncome(int idOfLoggedUser) {
-    FinancialData income = setDataOfNewIncome(idOfLoggedUser);
-    incomes.push_back(income);
-    cout<<"//from vector income.getAmount() = "<<income.getAmount()<<endl;
-    cout << endl << "//Income saved in vector." << endl << endl;
-    incomesFile.addIncomeToFile(income);
+void ExpenseManager::addExpense(int idOfLoggedUser) {
+    FinancialData expense = setDataOfNewExpense(idOfLoggedUser);
+    expenses.push_back(expense);
+    cout<<"//from vector expense.getAmount() = "<<expense.getAmount()<<endl;
+    cout << endl << "//Expense saved in vector." << endl << endl;
+    expensesFile.addExpenseToFile(expense);
     system("pause");
 }
 
-FinancialData IncomeManager::setDataOfNewIncome(int idOfLoggedUser) {
-    FinancialData income;
+FinancialData ExpenseManager::setDataOfNewExpense(int idOfLoggedUser) {
+    FinancialData expense;
 
-    income.setIdFinancialData(getIdOfNewIncome());
-    income.setIdUser(idOfLoggedUser);
-    income.setDate(getNewDate());
-    cout<<"Type description of the income: "<<endl;
-    income.setDescription(SupportingMethods::uploadLine());
-    cout<<"Type amount of the income: ";
-    income.setAmount(stod(SupportingMethods::changeCommaToDot(SupportingMethods::uploadLine())));
+    expense.setIdFinancialData(getIdOfNewExpense());
+    expense.setIdUser(idOfLoggedUser);
+    expense.setDate(getNewDate());
+    cout<<"Type description of the expense: "<<endl;
+    expense.setDescription(SupportingMethods::uploadLine());
+    cout<<"Type amount of the expense: ";
+    expense.setAmount(stod(SupportingMethods::changeCommaToDot(SupportingMethods::uploadLine())));
 
-    return income;
+    return expense;
 }
 
-int IncomeManager::getIdOfNewIncome() {
-    if (incomes.empty() == true) {
-        return incomesFile.getIdOfLastIncome()+1;
+int ExpenseManager::getIdOfNewExpense() {
+    if (expenses.empty() == true) {
+        return expensesFile.getIdOfLastExpense()+1;
     } else {
-        if(incomesFile.getIdOfLastIncome() > incomes.back().getIdFinancialData()) {
-            return incomesFile.getIdOfLastIncome()+1;
+        if(expensesFile.getIdOfLastExpense() > expenses.back().getIdFinancialData()) {
+            return expensesFile.getIdOfLastExpense()+1;
         } else {
-            return incomes.back().getIdFinancialData()+1;
+            return expenses.back().getIdFinancialData()+1;
         }
     }
 };
 
-string IncomeManager::getNewDate() {
+string ExpenseManager::getNewDate() {
     string dateFromUser, year, month, day;
     char choice;
     string presentDate;
 
-    cout<<"Today's income or other date? (T-today/O-other)";
+    cout<<"Today's expense or other date? (T-today/O-other)";
 
     for (int attempt=0; attempt<3; attempt++) {
         cin>>choice;
         if (choice == 'T' || choice == 't') {
             presentDate = SupportingMethods::getPresentDateString();
-            cout<<"Present date: "<<presentDate<<endl;;
+            cout<<"Present expense date: "<<presentDate<<endl;;
             return presentDate;
         }
         if (choice == 'O' || choice == 'o') {
@@ -64,21 +64,21 @@ string IncomeManager::getNewDate() {
     return "2000-01-01";
 }
 
-void IncomeManager::printAllIncomes() {
-    for (int i=0; i<incomes.size(); i++) {
-        cout<<"income IdFinancialData= "<<incomes[i].getIdFinancialData()<<endl;
-        cout<<"income IdUser= "<<incomes[i].getIdUser()<<endl;
-        cout<<"income Date= "<<incomes[i].getDate()<<endl;
-        cout<<"income Description= "<<incomes[i].getDescription()<<endl;
-        cout<<"income Amount= "<<incomes[i].getAmount()<<endl;
+void ExpenseManager::printAllExpenses() {
+    for (int i=0; i<expenses.size(); i++) {
+        cout<<"expense IdFinancialData= "<<expenses[i].getIdFinancialData()<<endl;
+        cout<<"expense IdUser= "<<expenses[i].getIdUser()<<endl;
+        cout<<"expense Date= "<<expenses[i].getDate()<<endl;
+        cout<<"expense Description= "<<expenses[i].getDescription()<<endl;
+        cout<<"expense Amount= "<<expenses[i].getAmount()<<endl;
         cout<<"---"<<endl;
     }
 }
 
-string IncomeManager::getDateFromUser() {
+string ExpenseManager::getDateFromUser() {
     string date, year, month, day, timeInfo;
 
-    cout<<"Year of the income: ";
+    cout<<"Year of the expense: ";
     cin>>timeInfo;
     if (checkYearFromUser(timeInfo) == true) {
         year = timeInfo;
@@ -87,7 +87,7 @@ string IncomeManager::getDateFromUser() {
         return "error";
     }
 
-    cout<<"Month of the income: ";
+    cout<<"Month of the expense: ";
     cin>>timeInfo;
     if (checkMonthFromUser(timeInfo) == true) {
         month = timeInfo;
@@ -99,7 +99,7 @@ string IncomeManager::getDateFromUser() {
         month = "0" + month;
     }
 
-    cout<<"Day of the income: ";
+    cout<<"Day of the expense: ";
     cin>>timeInfo;
     if (checkDayFromUser(timeInfo, month, year) == true) {
         day = timeInfo;
@@ -112,11 +112,11 @@ string IncomeManager::getDateFromUser() {
     }
 
     date = year +"-"+ month +"-"+ day;
-    cout<<"Your date: "<<date<<endl;
+    cout<<"Your expense date: "<<date<<endl;
     return date;
 }
 
-bool IncomeManager::checkYearFromUser(string timeInfo) {
+bool ExpenseManager::checkYearFromUser(string timeInfo) {
     if (stoi(timeInfo) >= 2000 && stoi(timeInfo) <= stoi(SupportingMethods::getPresentYear())) {
         return true;
     } else {
@@ -125,7 +125,7 @@ bool IncomeManager::checkYearFromUser(string timeInfo) {
     }
 }
 
-bool IncomeManager::checkMonthFromUser(string timeInfo) {
+bool ExpenseManager::checkMonthFromUser(string timeInfo) {
     if (stoi(timeInfo) >= 1 && stoi(timeInfo) <= 12) {
         return true;
     } else {
@@ -134,7 +134,7 @@ bool IncomeManager::checkMonthFromUser(string timeInfo) {
     }
 }
 
-bool IncomeManager::checkDayFromUser(string timeInfo, string month, string year) {
+bool ExpenseManager::checkDayFromUser(string timeInfo, string month, string year) {
     int daysInMonth = 0;
     switch(stoi(month)) {
     case 1:
@@ -190,7 +190,7 @@ bool IncomeManager::checkDayFromUser(string timeInfo, string month, string year)
     }
 }
 
-bool IncomeManager::checkIfLeapYear(int year) {
+bool ExpenseManager::checkIfLeapYear(int year) {
     if ((year%4 == 0)&&(year%100 != 0)) {
         return true;
     } else if (year%400 == 0) {
@@ -199,3 +199,4 @@ bool IncomeManager::checkIfLeapYear(int year) {
         return false;
     }
 }
+
