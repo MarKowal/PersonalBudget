@@ -26,6 +26,14 @@ void FinancialData::setAmount(double newAmount) {
     }
 }
 
+void FinancialData::setDateAsNumber(int newDateAsNumber) {
+    if (newDateAsNumber >= 20000101) {
+        dateAsNumber = newDateAsNumber;
+    }
+}
+
+
+
 int FinancialData::getIdFinancialData() {
     return idFinancialData;
 }
@@ -44,3 +52,8 @@ string FinancialData::getDescription() {
 double FinancialData::getAmount() {
     return amount;
 }
+
+int FinancialData::getDateAsNumber() {
+    return dateAsNumber;
+}
+

@@ -25,6 +25,8 @@ class IncomeManager {
     bool checkDayFromUser(string timeInfo, string month, string year);
     bool checkIfLeapYear(int year);
 
+    void changeDateIntoNumber();
+
 
 public:
    IncomeManager(int idOfLoggedUser);

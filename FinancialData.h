@@ -11,15 +11,17 @@ class FinancialData {
     string date;
     string description;
     double amount; //zmienic na wiekszy typ bo zaokragla tysiace
+    int dateAsNumber;
 
 public:
    FinancialData(int idFinancialData = 0, int idUser = 0, string date = "",
-                 string description = "", double amount = 0){
+                 string description = "", double amount = 0, int dateAsNumber = 0){
        this -> idFinancialData = idFinancialData;
        this -> idUser = idUser;
        this -> date = date;
        this -> description = description;
        this -> amount = amount;
+       this -> dateAsNumber = dateAsNumber;
    };
 
     void setIdFinancialData(int newIdFinancialData);
@@ -27,12 +29,16 @@ public:
     void setDate(string newDate);
     void setDescription(string newDescription);
     void setAmount(double newAmount);
+    void setDateAsNumber(int newDateAsNumber);
+
 
     int getIdFinancialData();
     int getIdUser();
     string getDate();
     string getDescription();
     double getAmount();
+    int getDateAsNumber();
+
 };
 
 #endif

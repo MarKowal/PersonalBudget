@@ -2,6 +2,9 @@
 
 IncomeManager::IncomeManager(int idOfLoggedUser) {
     incomes = incomesFile.loadIncomesFromFile(idOfLoggedUser);
+    if (!incomes.empty()) {
+            changeDateIntoNumber();
+    }
 }
 
 void IncomeManager::addIncome(int idOfLoggedUser) {
@@ -10,6 +13,7 @@ void IncomeManager::addIncome(int idOfLoggedUser) {
     cout<<"//from vector income.getAmount() = "<<income.getAmount()<<endl;
     cout << endl << "//Income saved in vector." << endl << endl;
     incomesFile.addIncomeToFile(income);
+    changeDateIntoNumber();
     system("pause");
 }
 
@@ -66,11 +70,12 @@ string IncomeManager::getNewDate() {
 
 void IncomeManager::printAllIncomes() {
     for (int i=0; i<incomes.size(); i++) {
-        cout<<"income IdFinancialData= "<<incomes[i].getIdFinancialData()<<endl;
-        cout<<"income IdUser= "<<incomes[i].getIdUser()<<endl;
-        cout<<"income Date= "<<incomes[i].getDate()<<endl;
-        cout<<"income Description= "<<incomes[i].getDescription()<<endl;
-        cout<<"income Amount= "<<incomes[i].getAmount()<<endl;
+        cout<<"income IdFinancialData = "<<incomes[i].getIdFinancialData()<<endl;
+        cout<<"income IdUser = "<<incomes[i].getIdUser()<<endl;
+        cout<<"income Date = "<<incomes[i].getDate()<<endl;
+        cout<<"income Description = "<<incomes[i].getDescription()<<endl;
+        cout<<"income Amount = "<<incomes[i].getAmount()<<endl;
+        cout<<"income DateAsNumber = "<<incomes[i].getDateAsNumber()<<endl;
         cout<<"---"<<endl;
     }
 }
@@ -199,3 +204,23 @@ bool IncomeManager::checkIfLeapYear(int year) {
         return false;
     }
 }
+
+void IncomeManager::changeDateIntoNumber() {
+    for (int i=0; i<incomes.size(); i++) {
+
+        string dateWithDashes = incomes[i].getDate();
+        string dateWithoutDashes = "";
+        int dateAsNumber = NULL;
+
+        for (int i=0; i<dateWithDashes.length(); i++) {
+            if (dateWithDashes[i] == '-') {
+                continue;
+            } else {
+                dateWithoutDashes = dateWithoutDashes + dateWithDashes[i];
+            }
+        }
+        dateAsNumber = stoi(dateWithoutDashes);
+        incomes[i].setDateAsNumber(dateAsNumber);
+    }
+}
+

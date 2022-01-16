@@ -11,6 +11,7 @@ using namespace std;
 
 int main()
 {
+   /*
     PersonalBudget personalBudget;
 
     personalBudget.printAllUsers();
@@ -18,6 +19,10 @@ int main()
     personalBudget.addExpense();
     personalBudget.addExpense();
     personalBudget.printAllExpenses();
+    */
+    IncomeManager incomes(14);
+    incomes.printAllIncomes();
+
 
 
     return 0;
