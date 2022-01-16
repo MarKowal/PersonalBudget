@@ -207,7 +207,6 @@ bool IncomeManager::checkIfLeapYear(int year) {
 
 void IncomeManager::changeDateIntoNumber() {
     for (int i=0; i<incomes.size(); i++) {
-
         string dateWithDashes = incomes[i].getDate();
         string dateWithoutDashes = "";
         int dateAsNumber = NULL;
@@ -223,4 +222,9 @@ void IncomeManager::changeDateIntoNumber() {
         incomes[i].setDateAsNumber(dateAsNumber);
     }
 }
+
+vector<FinancialData> IncomeManager::getIncomes() {
+    return incomes;
+}
+
 

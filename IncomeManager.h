@@ -29,10 +29,10 @@ class IncomeManager {
 
 
 public:
-   IncomeManager(int idOfLoggedUser);
-   void addIncome(int idOfLoggedUser);
-   void printAllIncomes();
-
+    IncomeManager(int idOfLoggedUser);
+    void addIncome(int idOfLoggedUser);
+    void printAllIncomes();
+    vector<FinancialData> getIncomes();
 };
 
 #endif
