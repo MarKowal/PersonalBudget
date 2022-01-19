@@ -49,7 +49,7 @@ string ExpenseManager::getNewDate() {
     for (int attempt=0; attempt<3; attempt++) {
         cin>>choice;
         if (choice == 'T' || choice == 't') {
-            presentDate = SupportingMethods::getPresentDateString();
+            presentDate = SupportingMethods::getPresentDate();
             cout<<"Present expense date: "<<presentDate<<endl;;
             return presentDate;
         }
@@ -141,7 +141,7 @@ bool ExpenseManager::checkDayFromUser(string timeInfo, string month, string year
         daysInMonth = 31;
         break;
     case 2:
-        if (checkIfLeapYear(stoi(year)) == true) {
+        if (SupportingMethods::checkIfLeapYear(stoi(year)) == true) {
             daysInMonth = 29;
         } else {
             daysInMonth = 28;
@@ -190,13 +190,6 @@ bool ExpenseManager::checkDayFromUser(string timeInfo, string month, string year
     }
 }
 
-bool ExpenseManager::checkIfLeapYear(int year) {
-    if ((year%4 == 0)&&(year%100 != 0)) {
-        return true;
-    } else if (year%400 == 0) {
-        return true;
-    } else {
-        return false;
-    }
+vector<FinancialData> ExpenseManager::getExpenses() {
+    return expenses;
 }
-
