@@ -15,13 +15,13 @@ class BalanceSheet {
 
     struct lessThanKey;  //struktura daje return - dziala jak klasa z funkcja?
 
-    void sortVector(vector<FinancialData> &someVector); //zrobie jako sortFinancialData
+    void sortVector(vector<FinancialData> &someVector);
 
 public:
     BalanceSheet() {};
     void showBalanceSheetForPresentMonth(vector<FinancialData> incomes);
     void showBalanceSheetForPreviousMonth(vector<FinancialData> incomes);
-
+    void showBalanceSheetForChosenPeriod(vector<FinancialData> incomes);
 };
 
 #endif

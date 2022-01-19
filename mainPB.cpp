@@ -12,11 +12,13 @@ using namespace std;
 int main()
 {
 
+
     PersonalBudget personalBudget;
 
     personalBudget.printAllUsers();
     personalBudget.logInUser();
-    personalBudget.showBalanceSheetForPreviousMonth();
+    personalBudget.showBalanceSheetForChosenPeriod();
+
 
 
 
@@ -40,9 +42,9 @@ int main()
 
     BalanceSheet balanceSheet;
    // balanceSheet.showBalanceSheetForPresentMonth(vec);
-    balanceSheet.showBalanceSheetForPreviousMonth(vec);
+   // balanceSheet.showBalanceSheetForPreviousMonth(vec);
+    balanceSheet.showBalanceSheetForChosenPeriod(vec);
     */
-
 
     return 0;
 }

@@ -176,3 +176,97 @@ string SupportingMethods::howManyDaysInMonth(string month, string year) {
     }
     return to_string(daysInMonth);
 }
+
+string SupportingMethods::getDateFromUser() {
+    string date, year, month, day, timeInfo;
+
+    cout<<"Year:";
+    cin>>timeInfo;
+    if (checkYearFromUser(timeInfo) == true) {
+        year = timeInfo;
+        timeInfo = "";
+    } else {
+        return "error";
+    }
+
+    cout<<"Month:";
+    cin>>timeInfo;
+    if (checkMonthFromUser(timeInfo) == true) {
+        month = timeInfo;
+        timeInfo = "";
+    } else {
+        return "error";
+    }
+    if (month.length()<2) {
+        month = "0" + month;
+    }
+
+    cout<<"Day:";
+    cin>>timeInfo;
+    if (checkDayFromUser(timeInfo, month, year) == true) {
+        day = timeInfo;
+        timeInfo = "";
+    } else {
+        return "error";
+    }
+    if (day.length()<2) {
+        day = "0" + day;
+    }
+
+    date = year +"-"+ month +"-"+ day;
+    cout<<"Your date: "<<date<<endl;
+    return date;
+}
+
+bool SupportingMethods::checkYearFromUser(string timeInfo) {
+    if (stoi(timeInfo) >= 2000 && stoi(timeInfo) <= stoi(getPresentYear())) {
+        return true;
+    } else {
+        cout<<"Wrong year. Should be from 2000 to "<<getPresentYear()<<"."<<endl;
+        return false;
+    }
+}
+
+bool SupportingMethods::checkMonthFromUser(string timeInfo) {
+    if (stoi(timeInfo) >= 1 && stoi(timeInfo) <= 12) {
+        return true;
+    } else {
+        cout<<"Wrong month. Should be from 1 to 12."<<endl;
+        return false;
+    }
+}
+
+bool SupportingMethods::checkDayFromUser(string timeInfo, string month, string year) {
+    if (stoi(timeInfo) >= 1 && stoi(timeInfo) <= stoi(howManyDaysInMonth(month, year))) {
+    return true;
+} else {
+    cout<<"Wrong day. Should be from 1 to "<<stoi(howManyDaysInMonth(month, year))<<"."<<endl;
+        return false;
+    }
+}
+
+string SupportingMethods::getNewDate() {
+    string dateFromUser, year, month, day;
+    char choice;
+    string presentDate;
+
+    cout<<"Today's income or other date? (T-today/O-other)";
+
+    for (int attempt=0; attempt<3; attempt++) {
+        cin>>choice;
+        if (choice == 'T' || choice == 't') {
+            presentDate = getPresentDate();
+            cout<<"Present date: "<<presentDate<<endl;;
+            return presentDate;
+        }
+        if (choice == 'O' || choice == 'o') {
+            dateFromUser = getDateFromUser();
+            return dateFromUser;
+        } else {
+            cout<<"There is no such option."<<endl;
+            cout<<"Try again. You have: "<<2-attempt<<" attempts left"<<endl;
+        }
+    }
+    return "error";
+}
+

@@ -18,12 +18,12 @@ void BalanceSheet::showBalanceSheetForPresentMonth(vector<FinancialData> incomes
 
         for (int i=0; i<incomes.size(); i++) {
             if(incomes[i].getDateAsNumber() >= (presentDate-presentDayOfMonth+1) && incomes[i].getDateAsNumber() <= presentDate) {
-                cout<<"income IdFinancialData = "<<incomes[i].getIdFinancialData()<<endl;
-                cout<<"income IdUser = "<<incomes[i].getIdUser()<<endl;
-                cout<<"income Date = "<<incomes[i].getDate()<<endl;
-                cout<<"income Description = "<<incomes[i].getDescription()<<endl;
-                cout<<"income Amount = "<<incomes[i].getAmount()<<endl;
-                cout<<"income DateAsNumber = "<<incomes[i].getDateAsNumber()<<endl;
+                cout<<"income IdFinancialData =   "<<incomes[i].getIdFinancialData()<<endl;
+                cout<<"income IdUser =            "<<incomes[i].getIdUser()<<endl;
+                cout<<"income Date =              "<<incomes[i].getDate()<<endl;
+                cout<<"income Description =       "<<incomes[i].getDescription()<<endl;
+                cout<<"income Amount =            "<<incomes[i].getAmount()<<endl;
+                cout<<"income DateAsNumber =      "<<incomes[i].getDateAsNumber()<<endl;
                 cout<<"---"<<endl;
                 sumOfIncomes = sumOfIncomes + incomes[i].getAmount();
             }
@@ -38,25 +38,20 @@ void BalanceSheet::showBalanceSheetForPreviousMonth(vector<FinancialData> income
     double sumOfIncomes = 0;  //ZMIENIC TYP ZEBY POKAZYWAL UJEMNE
 
     string previousMonth = SupportingMethods::getPreviousMonth();
-    cout<<"previousMonth = "<<previousMonth<<endl;
     string previousYear = SupportingMethods::getPreviousYear(previousMonth);
-    cout<<"previousYear = "<<previousYear<<endl;
     string daysInPreviousMonth = SupportingMethods::howManyDaysInMonth(previousMonth, previousYear);
-    cout<<"daysInPreviousMonth = "<<daysInPreviousMonth<<endl;
 
     int previousMonthBegin = stoi(previousYear+previousMonth+"01");
     int previousMonthEnd = stoi(previousYear+previousMonth+daysInPreviousMonth);
-    cout<<"previousMonthBegin = "<<previousMonthBegin<<endl;
-    cout<<"previousMonthEnd = "<<previousMonthEnd<<endl;
 
     for (int i=0; i<incomes.size(); i++) {
         if(incomes[i].getDateAsNumber() >= previousMonthBegin && incomes[i].getDateAsNumber() <= previousMonthEnd) {
-            cout<<"income IdFinancialData = "<<incomes[i].getIdFinancialData()<<endl;
-            cout<<"income IdUser = "<<incomes[i].getIdUser()<<endl;
-            cout<<"income Date = "<<incomes[i].getDate()<<endl;
-            cout<<"income Description = "<<incomes[i].getDescription()<<endl;
-            cout<<"income Amount = "<<incomes[i].getAmount()<<endl;
-            cout<<"income DateAsNumber = "<<incomes[i].getDateAsNumber()<<endl;
+            cout<<"income IdFinancialData =   "<<incomes[i].getIdFinancialData()<<endl;
+            cout<<"income IdUser =            "<<incomes[i].getIdUser()<<endl;
+            cout<<"income Date =              "<<incomes[i].getDate()<<endl;
+            cout<<"income Description =       "<<incomes[i].getDescription()<<endl;
+            cout<<"income Amount =            "<<incomes[i].getAmount()<<endl;
+            cout<<"income DateAsNumber =      "<<incomes[i].getDateAsNumber()<<endl;
             cout<<"---"<<endl;
             sumOfIncomes = sumOfIncomes + incomes[i].getAmount();
         }
@@ -64,3 +59,32 @@ void BalanceSheet::showBalanceSheetForPreviousMonth(vector<FinancialData> income
     cout<<"sumOfIncomes = "<<sumOfIncomes<<endl;
 }
 
+void BalanceSheet::showBalanceSheetForChosenPeriod(vector<FinancialData> incomes) {
+    sortVector(incomes);
+    double sumOfIncomes = 0;  //ZMIENIC TYP ZEBY POKAZYWAL UJEMNE
+
+    cout<<"Begin of period:"<<endl;
+    string periodBegin = SupportingMethods::getDateFromUser();
+    int termBegin = SupportingMethods::changeDateIntoNumber(periodBegin);
+    cout<<"End of period:"<<endl;
+    string periodEnd = SupportingMethods::getDateFromUser();
+    int termEnd = SupportingMethods::changeDateIntoNumber(periodEnd);
+
+    if (termBegin > termEnd) {
+        cout<<"Wrong date End of period!"<<endl;
+    }
+
+    for (int i=0; i<incomes.size(); i++) {
+        if(incomes[i].getDateAsNumber() >= termBegin && incomes[i].getDateAsNumber() <= termEnd) {
+            cout<<"income IdFinancialData =   "<<incomes[i].getIdFinancialData()<<endl;
+            cout<<"income IdUser =            "<<incomes[i].getIdUser()<<endl;
+            cout<<"income Date =              "<<incomes[i].getDate()<<endl;
+            cout<<"income Description =       "<<incomes[i].getDescription()<<endl;
+            cout<<"income Amount =            "<<incomes[i].getAmount()<<endl;
+            cout<<"income DateAsNumber =      "<<incomes[i].getDateAsNumber()<<endl;
+            cout<<"---"<<endl;
+            sumOfIncomes = sumOfIncomes + incomes[i].getAmount();
+        }
+    }
+    cout<<"sumOfIncomes = "<<sumOfIncomes<<endl;
+}
