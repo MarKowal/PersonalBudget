@@ -22,14 +22,13 @@ class ExpenseManager {
     bool checkYearFromUser(string timeInfo);
     bool checkMonthFromUser(string timeInfo);
     bool checkDayFromUser(string timeInfo, string month, string year);
-    bool checkIfLeapYear(int year);
 
 
 public:
-   ExpenseManager(int idOfLoggedUser);
-   void addExpense(int idOfLoggedUser);
-   void printAllExpenses();
-
+    ExpenseManager(int idOfLoggedUser);
+    void addExpense(int idOfLoggedUser);
+    void printAllExpenses();
+    vector<FinancialData> getExpenses();
 };
 
 #endif

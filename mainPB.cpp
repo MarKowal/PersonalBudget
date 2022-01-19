@@ -11,32 +11,37 @@ using namespace std;
 
 int main()
 {
-   /*
+
     PersonalBudget personalBudget;
 
     personalBudget.printAllUsers();
     personalBudget.logInUser();
-    personalBudget.addExpense();
-    personalBudget.addExpense();
-    personalBudget.printAllExpenses();
-    */
+    personalBudget.showBalanceSheetForPreviousMonth();
 
-   // IncomeManager incomes(14);
-   // incomes.printAllIncomes();
 
-   vector < FinancialData > vec;
 
-    FinancialData income1 = {11, 15, "2021-01-02", "loan", 1345, 2};
-    FinancialData income2 = {24, 9, "2021-03-05", "credit", 65, 3};
-    FinancialData income3 = {3, 4, "2021-09-07", "gift", 991, 1};
+   //IncomeManager incomes(14);
+    //incomes.printAllIncomes();
+
+    /*
+    vector < FinancialData > vec;
+
+    FinancialData income1 = {1, 1, "2022-01-12", "loan", 1345, 20220112};
+    FinancialData income2 = {2, 2, "2021-12-05", "credit", 65, 20211205};
+    FinancialData income3 = {3, 2, "2022-01-01", "big gift", 891, 20220101};
+    FinancialData income4 = {4, 3, "2021-12-08", "small gift", 91, 20211208};
+    FinancialData income5 = {5, 1, "2021-12-31", "medium gift", 57, 20211231};
 
     vec.push_back(income1);
     vec.push_back(income2);
     vec.push_back(income3);
-
+    vec.push_back(income4);
+    vec.push_back(income5);
 
     BalanceSheet balanceSheet;
-    balanceSheet.sortAllIncomes(vec);
+   // balanceSheet.showBalanceSheetForPresentMonth(vec);
+    balanceSheet.showBalanceSheetForPreviousMonth(vec);
+    */
 
 
     return 0;

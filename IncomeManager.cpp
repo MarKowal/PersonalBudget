@@ -53,7 +53,7 @@ string IncomeManager::getNewDate() {
     for (int attempt=0; attempt<3; attempt++) {
         cin>>choice;
         if (choice == 'T' || choice == 't') {
-            presentDate = SupportingMethods::getPresentDateString();
+            presentDate = SupportingMethods::getPresentDate();
             cout<<"Present date: "<<presentDate<<endl;;
             return presentDate;
         }
@@ -146,7 +146,7 @@ bool IncomeManager::checkDayFromUser(string timeInfo, string month, string year)
         daysInMonth = 31;
         break;
     case 2:
-        if (checkIfLeapYear(stoi(year)) == true) {
+        if (SupportingMethods::checkIfLeapYear(stoi(year)) == true) {
             daysInMonth = 29;
         } else {
             daysInMonth = 28;
@@ -191,16 +191,6 @@ bool IncomeManager::checkDayFromUser(string timeInfo, string month, string year)
         return true;
     } else {
         cout<<"Wrong day. Should be from 1 to "<<daysInMonth<<"."<<endl;
-        return false;
-    }
-}
-
-bool IncomeManager::checkIfLeapYear(int year) {
-    if ((year%4 == 0)&&(year%100 != 0)) {
-        return true;
-    } else if (year%400 == 0) {
-        return true;
-    } else {
         return false;
     }
 }
