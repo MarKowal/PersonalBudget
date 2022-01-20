@@ -16,6 +16,7 @@ public:
     SupportingMethods(){};
     static string uploadLine();
     static string changeCommaToDot(string number);
+    static char setSign();
 
     //metody odnoszace sie do czasu, moze do osobnej klasy TimeMethods?
     static string getPresentDate();

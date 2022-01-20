@@ -238,9 +238,9 @@ bool SupportingMethods::checkMonthFromUser(string timeInfo) {
 
 bool SupportingMethods::checkDayFromUser(string timeInfo, string month, string year) {
     if (stoi(timeInfo) >= 1 && stoi(timeInfo) <= stoi(howManyDaysInMonth(month, year))) {
-    return true;
-} else {
-    cout<<"Wrong day. Should be from 1 to "<<stoi(howManyDaysInMonth(month, year))<<"."<<endl;
+        return true;
+    } else {
+        cout<<"Wrong day. Should be from 1 to "<<stoi(howManyDaysInMonth(month, year))<<"."<<endl;
         return false;
     }
 }
@@ -270,3 +270,17 @@ string SupportingMethods::getNewDate() {
     return "error";
 }
 
+char SupportingMethods::setSign() {
+    string input = "";
+    char sign  = {0};
+
+    while (true) {
+        getline(cin, input);
+        if (input.length() == 1) {
+            sign = input[0];
+            break;
+        }
+        cout << "Onlu one sign. Try again..." << endl;
+    }
+    return sign;
+}
