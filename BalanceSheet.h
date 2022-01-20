@@ -13,15 +13,15 @@ using namespace std;
 
 class BalanceSheet {
 
-    struct lessThanKey;  //struktura daje return - dziala jak klasa z funkcja?
+    struct lessThanKey;
 
     void sortVector(vector<FinancialData> &someVector);
 
 public:
     BalanceSheet() {};
-    void showBalanceSheetForPresentMonth(vector<FinancialData> incomes);
-    void showBalanceSheetForPreviousMonth(vector<FinancialData> incomes);
-    void showBalanceSheetForChosenPeriod(vector<FinancialData> incomes);
+    void showBalanceSheetForPresentMonth(vector<FinancialData> incomes, vector<FinancialData> expenses);
+    void showBalanceSheetForPreviousMonth(vector<FinancialData> incomes, vector<FinancialData> expenses);
+    void showBalanceSheetForChosenPeriod(vector<FinancialData> incomes, vector<FinancialData> expenses);
 };
 
 #endif

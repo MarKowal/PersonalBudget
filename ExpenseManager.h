@@ -17,11 +17,7 @@ class ExpenseManager {
 
     FinancialData setDataOfNewExpense(int idOfLoggedUser);
     int getIdOfNewExpense();
-    string getNewDate();
-    string getDateFromUser();
-    bool checkYearFromUser(string timeInfo);
-    bool checkMonthFromUser(string timeInfo);
-    bool checkDayFromUser(string timeInfo, string month, string year);
+    void changeDateIntoNumber();
 
 
 public:

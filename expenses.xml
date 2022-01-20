@@ -19,4 +19,19 @@
 <date>2021-12-01</date>
 <description>cinema</description>
 <amount>10.100000</amount>
+<idFinancialData>5</idFinancialData>
+<idUser>1</idUser>
+<date>2022-01-20</date>
+<description>language curse</description>
+<amount>150.160000</amount>
+<idFinancialData>6</idFinancialData>
+<idUser>1</idUser>
+<date>2021-12-27</date>
+<description>car mechanic</description>
+<amount>459.260000</amount>
+<idFinancialData>7</idFinancialData>
+<idUser>1</idUser>
+<date>2021-12-07</date>
+<description>crime book</description>
+<amount>30.430000</amount>
 </EXPENSES>

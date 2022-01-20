@@ -21,7 +21,6 @@ int main()
 
 
 
-
    //IncomeManager incomes(14);
     //incomes.printAllIncomes();
 

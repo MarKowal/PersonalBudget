@@ -3,14 +3,13 @@
 IncomeManager::IncomeManager(int idOfLoggedUser) {
     incomes = incomesFile.loadIncomesFromFile(idOfLoggedUser);
     if (!incomes.empty()) {
-            changeDateIntoNumber();
+        changeDateIntoNumber();
     }
 }
 
 void IncomeManager::addIncome(int idOfLoggedUser) {
     FinancialData income = setDataOfNewIncome(idOfLoggedUser);
     incomes.push_back(income);
-    cout<<"//from vector income.getAmount() = "<<income.getAmount()<<endl;
     cout << endl << "//Income saved in vector." << endl << endl;
     incomesFile.addIncomeToFile(income);
     changeDateIntoNumber();
@@ -44,13 +43,15 @@ int IncomeManager::getIdOfNewIncome() {
 };
 
 void IncomeManager::printAllIncomes() {
+    cout.setf(ios::fixed);
+    cout.precision(2);
     for (int i=0; i<incomes.size(); i++) {
-        cout<<"income IdFinancialData = "<<incomes[i].getIdFinancialData()<<endl;
-        cout<<"income IdUser = "<<incomes[i].getIdUser()<<endl;
-        cout<<"income Date = "<<incomes[i].getDate()<<endl;
-        cout<<"income Description = "<<incomes[i].getDescription()<<endl;
-        cout<<"income Amount = "<<incomes[i].getAmount()<<endl;
-        cout<<"income DateAsNumber = "<<incomes[i].getDateAsNumber()<<endl;
+        cout<<"income IdFinancialData =     "<<incomes[i].getIdFinancialData()<<endl;
+        cout<<"income IdUser =              "<<incomes[i].getIdUser()<<endl;
+        cout<<"income Date =                "<<incomes[i].getDate()<<endl;
+        cout<<"income Description =         "<<incomes[i].getDescription()<<endl;
+        cout<<"income Amount =              "<<incomes[i].getAmount()<<endl;
+        cout<<"income DateAsNumber =        "<<incomes[i].getDateAsNumber()<<endl;
         cout<<"---"<<endl;
     }
 }
