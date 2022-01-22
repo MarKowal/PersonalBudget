@@ -11,6 +11,8 @@ class SupportingMethods {
     static bool checkYearFromUser(string timeInfo);
     static bool checkMonthFromUser(string timeInfo);
     static bool checkDayFromUser(string timeInfo, string month, string year);
+    static bool checkIfFigureFrom0To9ASCII(string word);
+
 
 public:
     SupportingMethods(){};
@@ -18,7 +20,6 @@ public:
     static string changeCommaToDot(string number);
     static char setSign();
 
-    //metody odnoszace sie do czasu, moze do osobnej klasy TimeMethods?
     static string getPresentDate();
     static string getPresentYear();
     static int getPresentDayOfMonth();
@@ -30,10 +31,6 @@ public:
     static string howManyDaysInMonth(string month, string year);
     static string getDateFromUser();
     static string getNewDate();
-
-    //ZROBIC JAKAS METODE ZAMIAST ERROR W BLEDNEJ DACIE
-    //KTORA BEDZIE ZMUSZALA DO POPRAWNEJ DATY
-
 };
 
 #endif

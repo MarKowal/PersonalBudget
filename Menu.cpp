@@ -5,8 +5,8 @@ char Menu::chooseOptionFromMainMenu() {
     system("cls");
     cout << "    >>> MAIN MENU <<<" << endl;
     cout << "---------------------------" << endl;
-    cout << "1. Registration" << endl;
-    cout << "2. Log in" << endl;
+    cout << "1. Registration of User" << endl;
+    cout << "2. Log in User" << endl;
     cout << "9. Exit" << endl;
     cout << "---------------------------" << endl;
     cout << "Your choice: ";
@@ -25,8 +25,8 @@ char Menu::chooseOptionFromLoggedUserMenu() {
     cout << "4. Balance sheet for previous month" << endl;
     cout << "5. Balance sheet for chosen period" << endl;
     cout << "---------------------------" << endl;
-    cout << "6. Change user password" << endl;
-    cout << "7. Log out" << endl;
+    cout << "6. Change User password" << endl;
+    cout << "7. Log out User" << endl;
     cout << "---------------------------" << endl;
     cout << "Your choice: ";
     choice = SupportingMethods::setSign();

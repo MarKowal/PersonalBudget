@@ -10,7 +10,6 @@ IncomeManager::IncomeManager(int idOfLoggedUser) {
 void IncomeManager::addIncome(int idOfLoggedUser) {
     FinancialData income = setDataOfNewIncome(idOfLoggedUser);
     incomes.push_back(income);
-    cout << endl << "//Income saved in vector." << endl << endl;
     incomesFile.addIncomeToFile(income);
     changeDateIntoNumber();
     system("pause");

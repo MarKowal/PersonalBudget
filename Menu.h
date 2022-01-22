@@ -11,6 +11,7 @@ using namespace std;
 class Menu {
 
 public:
+    Menu (){};
     char chooseOptionFromMainMenu();
     char chooseOptionFromLoggedUserMenu();
 };

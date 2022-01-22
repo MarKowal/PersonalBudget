@@ -14,7 +14,6 @@ void IncomesFile::addIncomeToFile(FinancialData income) {
     xml.AddElem("description", income.getDescription());
     xml.AddElem("amount", to_string(income.getAmount()));
     xml.Save(getNAME_OF_FILE());
-    cout<<"//Income saved in xml file."<<endl;
 }
 
 vector<FinancialData> IncomesFile::loadIncomesFromFile(int idOfLoggedUser) {
@@ -49,7 +48,6 @@ vector<FinancialData> IncomesFile::loadIncomesFromFile(int idOfLoggedUser) {
 
             if (idOfLoggedUser == income.getIdUser()) {
                 incomes.push_back(income);
-                cout<<"//income loaded to vector from XML file"<<endl;
             }
         }
     }

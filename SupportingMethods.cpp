@@ -30,7 +30,7 @@ string SupportingMethods::getPresentDate() {
     day = timeInfo.tm_mday;
 
     if (month <= 9 && day <= 9) {
-        date = to_string(year) +"-0"+ to_string(month) +"-0"+ to_string(day); //to rozbic do osobnej funkcji?
+        date = to_string(year) +"-0"+ to_string(month) +"-0"+ to_string(day);
     }
     if (month > 9 && day <= 9) {
         date = to_string(year) +"-"+ to_string(month) +"-0"+ to_string(day);
@@ -180,34 +180,46 @@ string SupportingMethods::howManyDaysInMonth(string month, string year) {
 string SupportingMethods::getDateFromUser() {
     string date, year, month, day, timeInfo;
 
-    cout<<"Year:";
-    cin>>timeInfo;
-    if (checkYearFromUser(timeInfo) == true) {
-        year = timeInfo;
-        timeInfo = "";
-    } else {
-        return "error";
+    while(true) {
+        cout<<"Year:";
+        cin>>timeInfo;
+        if (checkIfFigureFrom0To9ASCII(timeInfo) == true) {
+            if (checkYearFromUser(timeInfo) == true) {
+                year = timeInfo;
+                timeInfo = "";
+                break;
+            }
+        }
+        cout<<"Try again..."<<endl;
     }
 
-    cout<<"Month:";
-    cin>>timeInfo;
-    if (checkMonthFromUser(timeInfo) == true) {
-        month = timeInfo;
-        timeInfo = "";
-    } else {
-        return "error";
+    while(true) {
+        cout<<"Month:";
+        cin>>timeInfo;
+        if (checkIfFigureFrom0To9ASCII(timeInfo) == true) {
+            if (checkMonthFromUser(timeInfo) == true) {
+                month = timeInfo;
+                timeInfo = "";
+                break;
+            }
+        }
+        cout<<"Try again..."<<endl;
     }
     if (month.length()<2) {
         month = "0" + month;
     }
 
-    cout<<"Day:";
-    cin>>timeInfo;
-    if (checkDayFromUser(timeInfo, month, year) == true) {
-        day = timeInfo;
-        timeInfo = "";
-    } else {
-        return "error";
+    while(true) {
+        cout<<"Day:";
+        cin>>timeInfo;
+        if (checkIfFigureFrom0To9ASCII(timeInfo) == true) {
+            if (checkDayFromUser(timeInfo, month, year) == true) {
+                day = timeInfo;
+                timeInfo = "";
+                break;
+            }
+            cout<<"Try again..."<<endl;
+        }
     }
     if (day.length()<2) {
         day = "0" + day;
@@ -250,24 +262,21 @@ string SupportingMethods::getNewDate() {
     char choice;
     string presentDate;
 
-    cout<<"Today's income or other date? (T-today/O-other)";
-
-    for (int attempt=0; attempt<3; attempt++) {
+    while(true) {
+        cout<<"Today's income or other date? (T-today/O-other)";
         cin>>choice;
         if (choice == 'T' || choice == 't') {
             presentDate = getPresentDate();
-            cout<<"Present date: "<<presentDate<<endl;;
+            cout<<"Present date: "<<presentDate<<endl;
             return presentDate;
         }
         if (choice == 'O' || choice == 'o') {
             dateFromUser = getDateFromUser();
             return dateFromUser;
         } else {
-            cout<<"There is no such option."<<endl;
-            cout<<"Try again. You have: "<<2-attempt<<" attempts left"<<endl;
+            cout<<"There is no such option. Try again..."<<endl<<endl;
         }
     }
-    return "error";
 }
 
 char SupportingMethods::setSign() {
@@ -280,7 +289,20 @@ char SupportingMethods::setSign() {
             sign = input[0];
             break;
         }
-        cout << "Onlu one sign. Try again..." << endl;
+        cout << "Only one sign. Try again..." << endl;
     }
     return sign;
+}
+
+bool SupportingMethods::checkIfFigureFrom0To9ASCII(string word) {
+    int ASCII = NULL;
+    for (int i=0; i<word.length(); i++) {
+        ASCII = (int)word[i];
+        if (ASCII >= 48 && ASCII <= 57) {
+            continue;
+        } else {
+            return false;
+        }
+    }
+    return true;
 }

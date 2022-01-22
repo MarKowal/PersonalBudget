@@ -21,6 +21,7 @@ void BalanceSheet::showBalanceSheetForPresentMonth(vector<FinancialData> incomes
     cout.setf(ios::fixed);
     cout.precision(2);
     sortVector(incomes);
+    cout<<"   --- INCOMES --- "<<endl;
     for (int i=0; i<incomes.size(); i++) {
         if(incomes[i].getDateAsNumber() >= (presentDate-presentDayOfMonth+1) && incomes[i].getDateAsNumber() <= presentDate) {
             cout<<"income IdFinancialData =   "<<incomes[i].getIdFinancialData()<<endl;
@@ -34,6 +35,7 @@ void BalanceSheet::showBalanceSheetForPresentMonth(vector<FinancialData> incomes
         }
     }
     sortVector(expenses);
+    cout<<"   --- EXPENSES --- "<<endl;
     for (int i=0; i<expenses.size(); i++) {
         if(expenses[i].getDateAsNumber() >= (presentDate-presentDayOfMonth+1) && expenses[i].getDateAsNumber() <= presentDate) {
             cout<<"expense IdFinancialData =     "<<expenses[i].getIdFinancialData()<<endl;
@@ -47,10 +49,11 @@ void BalanceSheet::showBalanceSheetForPresentMonth(vector<FinancialData> incomes
         }
     }
 
-    cout<<"sumOfIncomes = "<<sumOfIncomes<<endl;
-    cout<<"sumOfExpenses = "<<sumOfExpenses<<endl;
+    cout<<"SUM OF INCOMES =       "<<sumOfIncomes<<endl;
+    cout<<"SUM OF EXPENSES =      "<<sumOfExpenses<<endl;
     difference = sumOfIncomes - sumOfExpenses;
-    cout<<"difference = "<<difference<<endl;
+    cout<<"DIFFERENCE =           "<<difference<<endl;
+    system("pause");
 }
 
 void BalanceSheet::showBalanceSheetForPreviousMonth(vector<FinancialData> incomes, vector<FinancialData> expenses) {
@@ -67,6 +70,7 @@ void BalanceSheet::showBalanceSheetForPreviousMonth(vector<FinancialData> income
     cout.setf(ios::fixed);
     cout.precision(2);
     sortVector(incomes);
+    cout<<"   --- INCOMES --- "<<endl;
     for (int i=0; i<incomes.size(); i++) {
         if(incomes[i].getDateAsNumber() >= previousMonthBegin && incomes[i].getDateAsNumber() <= previousMonthEnd) {
             cout<<"income IdFinancialData =   "<<incomes[i].getIdFinancialData()<<endl;
@@ -80,6 +84,7 @@ void BalanceSheet::showBalanceSheetForPreviousMonth(vector<FinancialData> income
         }
     }
     sortVector(expenses);
+    cout<<"   --- EXPENSES --- "<<endl;
     for (int i=0; i<expenses.size(); i++) {
         if(expenses[i].getDateAsNumber() >= previousMonthBegin && expenses[i].getDateAsNumber() <= previousMonthEnd) {
             cout<<"expense IdFinancialData =     "<<expenses[i].getIdFinancialData()<<endl;
@@ -93,10 +98,11 @@ void BalanceSheet::showBalanceSheetForPreviousMonth(vector<FinancialData> income
         }
     }
 
-    cout<<"sumOfIncomes = "<<sumOfIncomes<<endl;
-    cout<<"sumOfExpenses = "<<sumOfExpenses<<endl;
+    cout<<"SUM OF INCOMES =       "<<sumOfIncomes<<endl;
+    cout<<"SUM OF EXPENSES =      "<<sumOfExpenses<<endl;
     difference = sumOfIncomes - sumOfExpenses;
-    cout<<"difference = "<<difference<<endl;
+    cout<<"DIFFERENCE =           "<<difference<<endl;
+    system("pause");
 }
 
 void BalanceSheet::showBalanceSheetForChosenPeriod(vector<FinancialData> incomes, vector<FinancialData> expenses) {
@@ -117,6 +123,7 @@ void BalanceSheet::showBalanceSheetForChosenPeriod(vector<FinancialData> incomes
     cout.setf(ios::fixed);
     cout.precision(2);
     sortVector(incomes);
+    cout<<"   --- INCOMES --- "<<endl;
     for (int i=0; i<incomes.size(); i++) {
         if(incomes[i].getDateAsNumber() >= termBegin && incomes[i].getDateAsNumber() <= termEnd) {
             cout<<"income IdFinancialData =   "<<incomes[i].getIdFinancialData()<<endl;
@@ -131,6 +138,7 @@ void BalanceSheet::showBalanceSheetForChosenPeriod(vector<FinancialData> incomes
     }
 
     sortVector(expenses);
+    cout<<"   --- EXPENSES --- "<<endl;
     for (int i=0; i<expenses.size(); i++) {
         if(expenses[i].getDateAsNumber() >= termBegin && expenses[i].getDateAsNumber() <= termEnd) {
             cout<<"expense IdFinancialData =     "<<expenses[i].getIdFinancialData()<<endl;
@@ -144,8 +152,9 @@ void BalanceSheet::showBalanceSheetForChosenPeriod(vector<FinancialData> incomes
         }
     }
 
-    cout<<"sumOfIncomes = "<<sumOfIncomes<<endl;
-    cout<<"sumOfExpenses = "<<sumOfExpenses<<endl;
+    cout<<"SUM OF INCOMES =       "<<sumOfIncomes<<endl;
+    cout<<"SUM OF EXPENSES =      "<<sumOfExpenses<<endl;
     difference = sumOfIncomes - sumOfExpenses;
-    cout<<"difference = "<<difference<<endl;
+    cout<<"DIFFERENCE =           "<<difference<<endl;
+    system("pause");
 }

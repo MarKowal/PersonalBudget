@@ -13,8 +13,6 @@ void UsersFile::addUserToFile(User user) {
     xml.AddElem("login", user.getLogin());
     xml.AddElem("password",user.getPassword());
     xml.Save(getNAME_OF_FILE());
-    cout<<"//User saved in xml file."<<endl;
-
 }
 
 vector<User> UsersFile::loadUsersFromFile() {
@@ -47,16 +45,12 @@ vector<User> UsersFile::loadUsersFromFile() {
             user.setPassword(temporaryData5);
 
             users.push_back(user);
-            cout<<"//User loaded to vector from XML file"<<endl;
         }
     }
     return users;
 }
 
 void UsersFile::changeLoggedUserPasswordInFile(string oldPassword, string newPassword) {
-    cout<<"//oldPassword on UsersFile = "<<oldPassword<<endl;
-    cout<<"//newPassword on UsersFile = "<<newPassword<<endl;
-
     string tempPasswordInfo;
 
     bool uploadFile = xml.Load(getNAME_OF_FILE());

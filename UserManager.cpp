@@ -11,7 +11,7 @@ void UserManager::registrationOfUser() {
     users.push_back(user);
 
     usersFile.addUserToFile(user);
-    cout << endl << "New account is set correctly." << endl << endl;
+    cout << endl << "New account has been set correctly." << endl << endl;
     system("pause");
 };
 
@@ -47,7 +47,7 @@ int UserManager::getIdOfNewUser() {
 bool UserManager::ifLoginIsAlreadyUsed(string login) {
     for (int i=0; i<users.size(); i++) {
         if (users[i].getLogin() == login) {
-            cout << endl << "This login is reserved by other user." << endl;
+            cout << endl << "This login is reserved by other User." << endl;
             return true;
         }
     }
@@ -92,7 +92,7 @@ int UserManager::logInUser() {
         }
         itr++;
     }
-    cout <<"There is no user with such login. Access denied."<< endl << endl;
+    cout <<"There is no User with such login. Access denied."<< endl << endl;
     system("pause");
     return 0;
 }
@@ -121,7 +121,6 @@ void UserManager::changeLoggedUserPassword() {
         }
 
     }
-    cout<<"//oldPassword on UsMen = "<<oldPassword<<endl;
     usersFile.changeLoggedUserPasswordInFile(oldPassword, newPassword);
 }
 

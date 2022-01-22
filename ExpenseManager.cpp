@@ -10,7 +10,6 @@ ExpenseManager::ExpenseManager(int idOfLoggedUser) {
 void ExpenseManager::addExpense(int idOfLoggedUser) {
     FinancialData expense = setDataOfNewExpense(idOfLoggedUser);
     expenses.push_back(expense);
-    cout << endl << "//Expense saved in vector." << endl << endl;
     expensesFile.addExpenseToFile(expense);
     changeDateIntoNumber();
     system("pause");
