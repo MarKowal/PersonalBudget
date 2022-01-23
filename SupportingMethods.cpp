@@ -170,9 +170,6 @@ string SupportingMethods::howManyDaysInMonth(string month, string year) {
     case 12:
         daysInMonth = 31;
         break;
-    default: {
-        cout<<"Wrong month."<<endl;
-    }
     }
     return to_string(daysInMonth);
 }
@@ -180,6 +177,31 @@ string SupportingMethods::howManyDaysInMonth(string month, string year) {
 string SupportingMethods::getDateFromUser() {
     string date, year, month, day, timeInfo;
 
+    while(true) {
+        cout<<"Type the date in format yyyy-mm-dd: "<<endl;
+        timeInfo = uploadLine();
+        if (timeInfo.length() == 10) {
+            for(int i=0; i<timeInfo.length(); i++) {
+                if (i <= 3) {
+                    year = year + timeInfo[i];
+                } else if (i >= 5 && i <= 6) {
+                    month = month + timeInfo[i];
+                } else if (i >= 8 && i <= 9) {
+                    day = day + timeInfo[i];
+                }
+            }
+            if (testingDateFromUser(year, month, day) == true) {
+                date = year +"-"+ month +"-"+ day;
+                break;
+                return date;
+            }
+        }
+        cout<<"Format must be yyyy-mm-dd. Try again..."<<endl;
+    }
+
+
+    /*
+    II VERSION - CODE FOR TYPING ONE AFTER ANOTHER YEAR, MONTH AND DAY:
     while(true) {
         cout<<"Year:";
         cin>>timeInfo;
@@ -228,10 +250,57 @@ string SupportingMethods::getDateFromUser() {
     date = year +"-"+ month +"-"+ day;
     cout<<"Your date: "<<date<<endl;
     return date;
+    */
 }
 
-bool SupportingMethods::checkYearFromUser(string timeInfo) {
-    if (stoi(timeInfo) >= 2000 && stoi(timeInfo) <= stoi(getPresentYear())) {
+bool SupportingMethods::testingDateFromUser(string year, string month, string day) {
+    bool testYear, testMonth, testDay;
+
+    if (checkIfFigureFrom0To9ASCII(year) == true) {
+        if (checkYearFromUser(year) == true) {
+            testYear = true;
+        } else {
+            testYear = false;
+            return false;
+        }
+    } else {
+        testYear = false;
+        return false;;
+    }
+
+    if (checkIfFigureFrom0To9ASCII(month) == true) {
+        if (checkMonthFromUser(month) == true) {
+            testMonth = true;
+        } else {
+            testMonth = false;
+            return false;;
+        }
+    } else {
+        testMonth = false;
+        return false;;
+    }
+
+    if (checkIfFigureFrom0To9ASCII(day) == true) {
+        if (checkDayFromUser(day, month, year) == true) {
+            testDay = true;
+        } else {
+            testDay = false;
+            return false;;
+        }
+    } else {
+        testDay = false;
+        return false;;
+    }
+
+    if(testYear == true && testMonth == true && testDay == true) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool SupportingMethods::checkYearFromUser(string year) {
+    if (stoi(year) >= 2000 && stoi(year) <= stoi(getPresentYear())) {
         return true;
     } else {
         cout<<"Wrong year. Should be from 2000 to "<<getPresentYear()<<"."<<endl;
@@ -239,8 +308,8 @@ bool SupportingMethods::checkYearFromUser(string timeInfo) {
     }
 }
 
-bool SupportingMethods::checkMonthFromUser(string timeInfo) {
-    if (stoi(timeInfo) >= 1 && stoi(timeInfo) <= 12) {
+bool SupportingMethods::checkMonthFromUser(string month) {
+    if (stoi(month) >= 1 && stoi(month) <= 12) {
         return true;
     } else {
         cout<<"Wrong month. Should be from 1 to 12."<<endl;
@@ -248,8 +317,8 @@ bool SupportingMethods::checkMonthFromUser(string timeInfo) {
     }
 }
 
-bool SupportingMethods::checkDayFromUser(string timeInfo, string month, string year) {
-    if (stoi(timeInfo) >= 1 && stoi(timeInfo) <= stoi(howManyDaysInMonth(month, year))) {
+bool SupportingMethods::checkDayFromUser(string day, string month, string year) {
+    if (stoi(day) >= 1 && stoi(day) <= stoi(howManyDaysInMonth(month, year))) {
         return true;
     } else {
         cout<<"Wrong day. Should be from 1 to "<<stoi(howManyDaysInMonth(month, year))<<"."<<endl;
@@ -301,6 +370,7 @@ bool SupportingMethods::checkIfFigureFrom0To9ASCII(string word) {
         if (ASCII >= 48 && ASCII <= 57) {
             continue;
         } else {
+            cout<<"This is not a figure"<<endl;
             return false;
         }
     }

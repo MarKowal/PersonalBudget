@@ -8,10 +8,6 @@
 #include "SupportingMethods.h"
 #include "UsersFile.h"
 
-
-/*
-3. zmiana hasla uzytkownika
-*/
 using namespace std;
 
 class UserManager {
@@ -22,7 +18,6 @@ class UserManager {
     User setDataOfNewUser();
     int getIdOfNewUser();
     bool ifLoginIsAlreadyUsed(string login);
-
 
 public:
     UserManager();
