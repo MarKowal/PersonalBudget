@@ -1,32 +1,7 @@
 <EXPENSES>
 <idFinancialData>1</idFinancialData>
 <idUser>1</idUser>
-<date>2021-12-04</date>
-<description>bread</description>
-<amount>23.110000</amount>
-<idFinancialData>2</idFinancialData>
-<idUser>1</idUser>
-<date>2022-01-06</date>
-<description>gift</description>
-<amount>329.685300</amount>
-<idFinancialData>3</idFinancialData>
-<idUser>1</idUser>
-<date>2021-12-13</date>
-<description>gift from friend</description>
-<amount>34.879500</amount>
-<idFinancialData>4</idFinancialData>
-<idUser>1</idUser>
-<date>2021-12-08</date>
-<description>premium</description>
-<amount>7334.123400</amount>
-<idFinancialData>5</idFinancialData>
-<idUser>1</idUser>
-<date>2022-01-19</date>
+<date>2021-12-07</date>
 <description>butter</description>
-<amount>3.980000</amount>
-<idFinancialData>6</idFinancialData>
-<idUser>1</idUser>
-<date>2020-02-29</date>
-<description>new CD</description>
-<amount>15.180000</amount>
+<amount>7.580000</amount>
 </EXPENSES>

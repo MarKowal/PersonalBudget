@@ -2,6 +2,7 @@
 #define XMLFILE_H
 
 #include <iostream>
+#include "Markup.h"
 
 
 
@@ -12,10 +13,10 @@ class XmlFile {
 
 
 public:
-    XmlFile(string NAME_OF_FILE = "") {
+    XmlFile(string NAME_OF_FILE = "", CMarkup xml = NULL) {
         this -> NAME_OF_FILE = NAME_OF_FILE;
     };
-
+    CMarkup xml;
     string getNAME_OF_FILE();
     void setNAME_OF_FILE(string newNAME_OF_FILE);
 

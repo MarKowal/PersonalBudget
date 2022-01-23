@@ -13,7 +13,7 @@ class SupportingMethods {
     static bool checkDayFromUser(string timeInfo, string month, string year);
     static bool checkIfFigureFrom0To9ASCII(string word);
     static bool testingDateFromUser(string year, string month, string day);
-    static bool checkIfLeapYear(int year); //to przeniesc do private
+    static bool checkIfLeapYear(int year);
 
 public:
     SupportingMethods(){};

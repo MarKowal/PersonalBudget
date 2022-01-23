@@ -12,7 +12,7 @@
 using namespace std;
 
 class IncomesFile : public XmlFile {
-    CMarkup xml; //a jakby to wrzucic do XmlFile i dziedziczyc?
+    //CMarkup xml;
     int idOfLastIncome;
 
 public:
