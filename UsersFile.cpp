@@ -7,6 +7,8 @@ void UsersFile::addUserToFile(User user) {
     }
     xml.FindElem();
     xml.IntoElem();
+    xml.AddElem("User");
+    xml.IntoElem();
     xml.AddElem("idUser", user.getIdUser());
     xml.AddElem("name", user.getName());
     xml.AddElem("surname", user.getSurname());
@@ -23,8 +25,11 @@ vector<User> UsersFile::loadUsersFromFile() {
     if (uploadFile == true) {
         xml.FindElem();
         xml.IntoElem();
-        while(xml.FindElem("idUser") ) {
+        while(xml.FindElem("User") ) {
 
+            xml.IntoElem();
+
+            xml.FindElem("idUser");
             MCD_STR temporaryData1 = xml.GetData();
             user.setIdUser(atoi(MCD_2PCSZ(temporaryData1)));
 
@@ -45,6 +50,8 @@ vector<User> UsersFile::loadUsersFromFile() {
             user.setPassword(temporaryData5);
 
             users.push_back(user);
+
+            xml.OutOfElem();
         }
     }
     return users;
@@ -56,13 +63,15 @@ void UsersFile::changeLoggedUserPasswordInFile(string oldPassword, string newPas
     bool uploadFile = xml.Load(getNAME_OF_FILE());
     xml.FindElem();
     xml.IntoElem();
-    while(xml.FindElem("password") ) {
-
+    while(xml.FindElem("User") ) {
+        xml.IntoElem();
+        xml.FindElem("password");
         MCD_STR temporaryData = xml.GetData();
         tempPasswordInfo = MCD_2PCSZ(temporaryData);
         if (tempPasswordInfo == oldPassword) {
             xml.SetData(newPassword);
         }
+        xml.OutOfElem();
         xml.Save(getNAME_OF_FILE());
     }
 }

@@ -376,3 +376,11 @@ bool SupportingMethods::checkIfFigureFrom0To9ASCII(string word) {
     }
     return true;
 }
+
+string SupportingMethods::conversionDoubleToString(double number) {
+    ostringstream ss;
+    ss << number;
+    string str = ss.str();
+    return str;
+}
+

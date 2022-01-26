@@ -7,6 +7,7 @@
 #include "XmlFile.h"
 #include "Markup.h"
 #include "FinancialData.h"
+#include "SupportingMethods.h"
 
 
 using namespace std;

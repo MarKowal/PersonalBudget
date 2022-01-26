@@ -12,7 +12,7 @@
 using namespace std;
 
 class UsersFile : public XmlFile {
-    CMarkup xml; //a jakby to wrzucic do XmlFile i dziedziczyc?
+  //  CMarkup xml;
 
 
 public:

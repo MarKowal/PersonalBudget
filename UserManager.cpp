@@ -119,7 +119,6 @@ void UserManager::changeLoggedUserPassword() {
             cout<<"Password has been changed."<<endl;
             system("pause");
         }
-
     }
     usersFile.changeLoggedUserPasswordInFile(oldPassword, newPassword);
 }

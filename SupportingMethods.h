@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <ctime>
+#include <sstream>
 
 using namespace std;
 
@@ -31,6 +32,8 @@ public:
     static string howManyDaysInMonth(string month, string year);
     static string getDateFromUser();
     static string getNewDate();
+    static string conversionDoubleToString(double number);
+
 };
 
 #endif

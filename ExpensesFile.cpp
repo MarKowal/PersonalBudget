@@ -8,11 +8,13 @@ void ExpensesFile::addExpenseToFile(FinancialData expense) {
     }
     xml.FindElem();
     xml.IntoElem();
+    xml.AddElem("Expense");
+    xml.IntoElem();
     xml.AddElem("idFinancialData", expense.getIdFinancialData());
     xml.AddElem("idUser", expense.getIdUser());
     xml.AddElem("date", expense.getDate());
     xml.AddElem("description", expense.getDescription());
-    xml.AddElem("amount", to_string(expense.getAmount()));
+    xml.AddElem("amount", SupportingMethods::conversionDoubleToString(expense.getAmount()));
     xml.Save(getNAME_OF_FILE());
 }
 
@@ -24,8 +26,11 @@ vector<FinancialData> ExpensesFile::loadExpensesFromFile(int idOfLoggedUser) {
     if (uploadFile == true) {
         xml.FindElem();
         xml.IntoElem();
-        while(xml.FindElem("idFinancialData") ) {
+        while(xml.FindElem("Expense") ) {
 
+            xml.IntoElem();
+
+            xml.FindElem("idFinancialData");
             MCD_STR temporaryData1 = xml.GetData();
             expense.setIdFinancialData(atoi(MCD_2PCSZ(temporaryData1)));
             idOfLastExpense = atoi(MCD_2PCSZ(temporaryData1));
@@ -49,6 +54,7 @@ vector<FinancialData> ExpensesFile::loadExpensesFromFile(int idOfLoggedUser) {
             if (idOfLoggedUser == expense.getIdUser()) {
                 expenses.push_back(expense);
             }
+            xml.OutOfElem();
         }
     }
     return expenses;

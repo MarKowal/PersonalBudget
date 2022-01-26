@@ -1,18 +1,19 @@
 #include "IncomesFile.h"
 
 void IncomesFile::addIncomeToFile(FinancialData income) {
-
     bool uploadFile = xml.Load(getNAME_OF_FILE());
     if (uploadFile!=true) {
         xml.AddElem("INCOMES");
     }
     xml.FindElem();
     xml.IntoElem();
+    xml.AddElem("Income");
+    xml.IntoElem();
     xml.AddElem("idFinancialData", income.getIdFinancialData());
     xml.AddElem("idUser", income.getIdUser());
     xml.AddElem("date", income.getDate());
     xml.AddElem("description", income.getDescription());
-    xml.AddElem("amount", to_string(income.getAmount()));
+    xml.AddElem("amount", SupportingMethods::conversionDoubleToString(income.getAmount()));
     xml.Save(getNAME_OF_FILE());
 }
 
@@ -24,8 +25,11 @@ vector<FinancialData> IncomesFile::loadIncomesFromFile(int idOfLoggedUser) {
     if (uploadFile == true) {
         xml.FindElem();
         xml.IntoElem();
-        while(xml.FindElem("idFinancialData") ) {
+        while(xml.FindElem("Income") ) {
 
+            xml.IntoElem();
+
+            xml.FindElem("idFinancialData");
             MCD_STR temporaryData1 = xml.GetData();
             income.setIdFinancialData(atoi(MCD_2PCSZ(temporaryData1)));
             idOfLastIncome = atoi(MCD_2PCSZ(temporaryData1));
@@ -49,6 +53,7 @@ vector<FinancialData> IncomesFile::loadIncomesFromFile(int idOfLoggedUser) {
             if (idOfLoggedUser == income.getIdUser()) {
                 incomes.push_back(income);
             }
+            xml.OutOfElem();
         }
     }
     return incomes;
