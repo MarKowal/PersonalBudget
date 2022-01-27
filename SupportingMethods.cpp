@@ -178,7 +178,14 @@ string SupportingMethods::getDateFromUser() {
     string date, year, month, day, timeInfo;
 
     while(true) {
-        cout<<"Type the date in format yyyy-mm-dd: "<<endl;
+        date = "";
+        year = "";
+        month = "";
+        day = "";
+        timeInfo = "";
+        cout<<"Type the date"<<endl;
+        cout<<"- from 2000-01-01 till end of this month"<<endl;
+        cout<<"- format yyyy-mm-dd:"<<endl;
         timeInfo = uploadLine();
         if (timeInfo.length() == 10) {
             for(int i=0; i<timeInfo.length(); i++) {
@@ -190,140 +197,80 @@ string SupportingMethods::getDateFromUser() {
                     day = day + timeInfo[i];
                 }
             }
-            if (testingDateFromUser(year, month, day) == true) {
-                date = year +"-"+ month +"-"+ day;
-                break;
-                return date;
+            if (testingDateFromUserIfFigure(year, month, day) == true) {
+                if (testingDateFromUserIfCorrectWithCalendar(year, month, day) == true) {
+                    date = year +"-"+ month +"-"+ day;
+                    break;
+                    return date;
+                }
             }
         }
-        cout<<"Format must be yyyy-mm-dd. Try again..."<<endl;
+        cout<<"Wrong date. Try again..."<<endl;
     }
-
-
-    /*
-    II VERSION - CODE FOR TYPING ONE AFTER ANOTHER YEAR, MONTH AND DAY:
-    while(true) {
-        cout<<"Year:";
-        cin>>timeInfo;
-        if (checkIfFigureFrom0To9ASCII(timeInfo) == true) {
-            if (checkYearFromUser(timeInfo) == true) {
-                year = timeInfo;
-                timeInfo = "";
-                break;
-            }
-        }
-        cout<<"Try again..."<<endl;
-    }
-
-    while(true) {
-        cout<<"Month:";
-        cin>>timeInfo;
-        if (checkIfFigureFrom0To9ASCII(timeInfo) == true) {
-            if (checkMonthFromUser(timeInfo) == true) {
-                month = timeInfo;
-                timeInfo = "";
-                break;
-            }
-        }
-        cout<<"Try again..."<<endl;
-    }
-    if (month.length()<2) {
-        month = "0" + month;
-    }
-
-    while(true) {
-        cout<<"Day:";
-        cin>>timeInfo;
-        if (checkIfFigureFrom0To9ASCII(timeInfo) == true) {
-            if (checkDayFromUser(timeInfo, month, year) == true) {
-                day = timeInfo;
-                timeInfo = "";
-                break;
-            }
-            cout<<"Try again..."<<endl;
-        }
-    }
-    if (day.length()<2) {
-        day = "0" + day;
-    }
-
-    date = year +"-"+ month +"-"+ day;
-    cout<<"Your date: "<<date<<endl;
-    return date;
-    */
 }
 
-bool SupportingMethods::testingDateFromUser(string year, string month, string day) {
-    bool testYear, testMonth, testDay;
+bool SupportingMethods::testingDateFromUserIfFigure(string year, string month, string day) {
+    bool testFigureYear, testFigureMonth, testFgiureDay;
 
     if (checkIfFigureFrom0To9ASCII(year) == true) {
-        if (checkYearFromUser(year) == true) {
-            testYear = true;
-        } else {
-            testYear = false;
-            return false;
-        }
-    } else {
-        testYear = false;
-        return false;;
-    }
+        testFigureYear = true;
+    } else testFigureYear = false;
 
     if (checkIfFigureFrom0To9ASCII(month) == true) {
-        if (checkMonthFromUser(month) == true) {
-            testMonth = true;
-        } else {
-            testMonth = false;
-            return false;;
-        }
-    } else {
-        testMonth = false;
-        return false;;
-    }
+        testFigureMonth = true;
+    } else testFigureMonth = false;
 
     if (checkIfFigureFrom0To9ASCII(day) == true) {
-        if (checkDayFromUser(day, month, year) == true) {
-            testDay = true;
-        } else {
-            testDay = false;
-            return false;;
-        }
-    } else {
-        testDay = false;
-        return false;;
-    }
+        testFgiureDay = true;
+    } else testFgiureDay = false;
 
-    if(testYear == true && testMonth == true && testDay == true) {
+    if (testFigureYear == true && testFigureMonth == true && testFgiureDay == true) {
         return true;
-    } else {
-        return false;
-    }
+    } else return false;
+}
+
+bool SupportingMethods::testingDateFromUserIfCorrectWithCalendar(string year, string month, string day) {
+    bool testCalendarYear, testCalendarMonth, testCalendarDay;
+
+    if (checkYearFromUser(year) == true) {
+        testCalendarYear = true;
+    } else testCalendarYear = false;
+
+    if (checkMonthFromUser(month, year) == true) {
+        testCalendarMonth = true;
+    } else testCalendarMonth = false;
+
+    if (checkDayFromUser(day, month, year) == true) {
+        testCalendarDay = true;
+    } else testCalendarDay = false;
+
+    if (testCalendarYear == true && testCalendarMonth == true && testCalendarDay == true) {
+        return true;
+    } else return false;
 }
 
 bool SupportingMethods::checkYearFromUser(string year) {
     if (stoi(year) >= 2000 && stoi(year) <= stoi(getPresentYear())) {
         return true;
-    } else {
-        cout<<"Wrong year. Should be from 2000 to "<<getPresentYear()<<"."<<endl;
-        return false;
-    }
+    } else return false;
 }
 
-bool SupportingMethods::checkMonthFromUser(string month) {
+bool SupportingMethods::checkMonthFromUser(string month, string year) {
+
+    if (stoi(year) == stoi(getPresentYear())) {
+        if (stoi(month) <= getPresentMonth()) {
+            return true;
+        } else return false;
+    }
     if (stoi(month) >= 1 && stoi(month) <= 12) {
         return true;
-    } else {
-        cout<<"Wrong month. Should be from 1 to 12."<<endl;
-        return false;
-    }
+    } else return false;
 }
 
 bool SupportingMethods::checkDayFromUser(string day, string month, string year) {
     if (stoi(day) >= 1 && stoi(day) <= stoi(howManyDaysInMonth(month, year))) {
         return true;
-    } else {
-        cout<<"Wrong day. Should be from 1 to "<<stoi(howManyDaysInMonth(month, year))<<"."<<endl;
-        return false;
-    }
+    } else return false;
 }
 
 string SupportingMethods::getNewDate() {
@@ -358,23 +305,23 @@ char SupportingMethods::setSign() {
             sign = input[0];
             break;
         }
-        cout << "Only one sign. Try again..." << endl;
     }
     return sign;
 }
 
 bool SupportingMethods::checkIfFigureFrom0To9ASCII(string word) {
+    bool testFigure;
     int ASCII = NULL;
     for (int i=0; i<word.length(); i++) {
         ASCII = (int)word[i];
         if (ASCII >= 48 && ASCII <= 57) {
-            continue;
+            testFigure = true;
         } else {
-            cout<<"This is not a figure"<<endl;
-            return false;
+            testFigure = false;
+            break;
         }
     }
-    return true;
+    return testFigure;
 }
 
 string SupportingMethods::conversionDoubleToString(double number) {

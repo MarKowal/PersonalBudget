@@ -17,17 +17,24 @@ void IncomeManager::addIncome(int idOfLoggedUser) {
 
 FinancialData IncomeManager::setDataOfNewIncome(int idOfLoggedUser) {
     FinancialData income;
+    string amount;
 
     income.setIdFinancialData(getIdOfNewIncome());
     income.setIdUser(idOfLoggedUser);
     income.setDate(SupportingMethods::getNewDate());
     cout<<"Type description of the income: "<<endl;
     income.setDescription(SupportingMethods::uploadLine());
-    cout<<"Type amount of the income: ";
-    income.setAmount(stod(SupportingMethods::changeCommaToDot(SupportingMethods::uploadLine())));
 
-    return income;
+    while(true) {
+        cout<<"Type amount of the income: ";
+        amount = SupportingMethods::changeCommaToDot(SupportingMethods::uploadLine());
+        if (checkIfFigureFrom0To9AsciiAndDot(amount) == true) {
+            income.setAmount(stod(amount));
+            break;
+        }
+    } return income;
 }
+
 
 int IncomeManager::getIdOfNewIncome() {
     if (incomes.empty() == true) {
@@ -77,4 +84,17 @@ vector<FinancialData> IncomeManager::getIncomes() {
     return incomes;
 }
 
-
+bool IncomeManager::checkIfFigureFrom0To9AsciiAndDot(string word) {
+    bool testFigure;
+    int ASCII = NULL;
+    for (int i=0; i<word.length(); i++) {
+        ASCII = (int)word[i];
+        if (ASCII >= 48 && ASCII <= 57 || ASCII == 46 || ASCII == 44) {
+            testFigure = true;
+        } else {
+            testFigure = false;
+            break;
+        }
+    }
+    return testFigure;
+}

@@ -8,6 +8,7 @@
 #include "ExpensesFile.h"
 #include "Menu.h"
 
+#include "SupportingMethods.h"
 
 using namespace std;
 
@@ -63,5 +64,6 @@ int main() {
             }
         }
     }
+
     return 0;
 }

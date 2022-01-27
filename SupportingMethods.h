@@ -9,18 +9,19 @@ using namespace std;
 
 class SupportingMethods {
 
-    static bool checkYearFromUser(string timeInfo);
-    static bool checkMonthFromUser(string timeInfo);
-    static bool checkDayFromUser(string timeInfo, string month, string year);
-    static bool checkIfFigureFrom0To9ASCII(string word);
-    static bool testingDateFromUser(string year, string month, string day);
+    static bool checkYearFromUser(string year);
+    static bool checkMonthFromUser(string month, string year);
+    static bool checkDayFromUser(string day, string month, string year);
+    static bool testingDateFromUserIfFigure(string year, string month, string day);
     static bool checkIfLeapYear(int year);
+    static bool testingDateFromUserIfCorrectWithCalendar(string year, string month, string day);
 
 public:
     SupportingMethods(){};
     static string uploadLine();
     static string changeCommaToDot(string number);
     static char setSign();
+    static string conversionDoubleToString(double number);
 
     static string getPresentDate();
     static string getPresentYear();
@@ -32,8 +33,7 @@ public:
     static string howManyDaysInMonth(string month, string year);
     static string getDateFromUser();
     static string getNewDate();
-    static string conversionDoubleToString(double number);
-
+    static bool checkIfFigureFrom0To9ASCII(string word);
 };
 
 #endif

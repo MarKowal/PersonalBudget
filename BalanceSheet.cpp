@@ -24,12 +24,12 @@ void BalanceSheet::showBalanceSheetForPresentMonth(vector<FinancialData> incomes
     cout<<"   --- INCOMES --- "<<endl;
     for (int i=0; i<incomes.size(); i++) {
         if(incomes[i].getDateAsNumber() >= (presentDate-presentDayOfMonth+1) && incomes[i].getDateAsNumber() <= presentDate) {
-            cout<<"income IdFinancialData =   "<<incomes[i].getIdFinancialData()<<endl;
-            cout<<"income IdUser =            "<<incomes[i].getIdUser()<<endl;
+            //cout<<"income IdFinancialData =   "<<incomes[i].getIdFinancialData()<<endl;
+            //cout<<"income IdUser =            "<<incomes[i].getIdUser()<<endl;
             cout<<"income Date =              "<<incomes[i].getDate()<<endl;
             cout<<"income Description =       "<<incomes[i].getDescription()<<endl;
             cout<<"income Amount =            "<<incomes[i].getAmount()<<endl;
-            cout<<"income DateAsNumber =      "<<incomes[i].getDateAsNumber()<<endl;
+            //cout<<"income DateAsNumber =      "<<incomes[i].getDateAsNumber()<<endl;
             cout<<"---"<<endl;
             sumOfIncomes = sumOfIncomes + incomes[i].getAmount();
         }
@@ -38,12 +38,12 @@ void BalanceSheet::showBalanceSheetForPresentMonth(vector<FinancialData> incomes
     cout<<"   --- EXPENSES --- "<<endl;
     for (int i=0; i<expenses.size(); i++) {
         if(expenses[i].getDateAsNumber() >= (presentDate-presentDayOfMonth+1) && expenses[i].getDateAsNumber() <= presentDate) {
-            cout<<"expense IdFinancialData =     "<<expenses[i].getIdFinancialData()<<endl;
-            cout<<"expense IdUser =              "<<expenses[i].getIdUser()<<endl;
+            //cout<<"expense IdFinancialData =     "<<expenses[i].getIdFinancialData()<<endl;
+            //cout<<"expense IdUser =              "<<expenses[i].getIdUser()<<endl;
             cout<<"expense Date =                "<<expenses[i].getDate()<<endl;
             cout<<"expense Description =         "<<expenses[i].getDescription()<<endl;
             cout<<"expense Amount =              "<<expenses[i].getAmount()<<endl;
-            cout<<"expense DateAsNumber =        "<<expenses[i].getDateAsNumber()<<endl;
+            //cout<<"expense DateAsNumber =        "<<expenses[i].getDateAsNumber()<<endl;
             cout<<"---"<<endl;
             sumOfExpenses = sumOfExpenses + expenses[i].getAmount();
         }
@@ -73,12 +73,12 @@ void BalanceSheet::showBalanceSheetForPreviousMonth(vector<FinancialData> income
     cout<<"   --- INCOMES --- "<<endl;
     for (int i=0; i<incomes.size(); i++) {
         if(incomes[i].getDateAsNumber() >= previousMonthBegin && incomes[i].getDateAsNumber() <= previousMonthEnd) {
-            cout<<"income IdFinancialData =   "<<incomes[i].getIdFinancialData()<<endl;
-            cout<<"income IdUser =            "<<incomes[i].getIdUser()<<endl;
+            //cout<<"income IdFinancialData =   "<<incomes[i].getIdFinancialData()<<endl;
+           // cout<<"income IdUser =            "<<incomes[i].getIdUser()<<endl;
             cout<<"income Date =              "<<incomes[i].getDate()<<endl;
             cout<<"income Description =       "<<incomes[i].getDescription()<<endl;
             cout<<"income Amount =            "<<incomes[i].getAmount()<<endl;
-            cout<<"income DateAsNumber =      "<<incomes[i].getDateAsNumber()<<endl;
+            //cout<<"income DateAsNumber =      "<<incomes[i].getDateAsNumber()<<endl;
             cout<<"---"<<endl;
             sumOfIncomes = sumOfIncomes + incomes[i].getAmount();
         }
@@ -87,12 +87,12 @@ void BalanceSheet::showBalanceSheetForPreviousMonth(vector<FinancialData> income
     cout<<"   --- EXPENSES --- "<<endl;
     for (int i=0; i<expenses.size(); i++) {
         if(expenses[i].getDateAsNumber() >= previousMonthBegin && expenses[i].getDateAsNumber() <= previousMonthEnd) {
-            cout<<"expense IdFinancialData =     "<<expenses[i].getIdFinancialData()<<endl;
-            cout<<"expense IdUser =              "<<expenses[i].getIdUser()<<endl;
+            //cout<<"expense IdFinancialData =     "<<expenses[i].getIdFinancialData()<<endl;
+            //cout<<"expense IdUser =              "<<expenses[i].getIdUser()<<endl;
             cout<<"expense Date =                "<<expenses[i].getDate()<<endl;
             cout<<"expense Description =         "<<expenses[i].getDescription()<<endl;
             cout<<"expense Amount =              "<<expenses[i].getAmount()<<endl;
-            cout<<"expense DateAsNumber =        "<<expenses[i].getDateAsNumber()<<endl;
+            //cout<<"expense DateAsNumber =        "<<expenses[i].getDateAsNumber()<<endl;
             cout<<"---"<<endl;
             sumOfExpenses = sumOfExpenses + expenses[i].getAmount();
         }
@@ -126,12 +126,12 @@ void BalanceSheet::showBalanceSheetForChosenPeriod(vector<FinancialData> incomes
     cout<<"   --- INCOMES --- "<<endl;
     for (int i=0; i<incomes.size(); i++) {
         if(incomes[i].getDateAsNumber() >= termBegin && incomes[i].getDateAsNumber() <= termEnd) {
-            cout<<"income IdFinancialData =   "<<incomes[i].getIdFinancialData()<<endl;
-            cout<<"income IdUser =            "<<incomes[i].getIdUser()<<endl;
+            //cout<<"income IdFinancialData =   "<<incomes[i].getIdFinancialData()<<endl;
+            //cout<<"income IdUser =            "<<incomes[i].getIdUser()<<endl;
             cout<<"income Date =              "<<incomes[i].getDate()<<endl;
             cout<<"income Description =       "<<incomes[i].getDescription()<<endl;
             cout<<"income Amount =            "<<incomes[i].getAmount()<<endl;
-            cout<<"income DateAsNumber =      "<<incomes[i].getDateAsNumber()<<endl;
+            //cout<<"income DateAsNumber =      "<<incomes[i].getDateAsNumber()<<endl;
             cout<<"---"<<endl;
             sumOfIncomes = sumOfIncomes + incomes[i].getAmount();
         }
@@ -141,12 +141,12 @@ void BalanceSheet::showBalanceSheetForChosenPeriod(vector<FinancialData> incomes
     cout<<"   --- EXPENSES --- "<<endl;
     for (int i=0; i<expenses.size(); i++) {
         if(expenses[i].getDateAsNumber() >= termBegin && expenses[i].getDateAsNumber() <= termEnd) {
-            cout<<"expense IdFinancialData =     "<<expenses[i].getIdFinancialData()<<endl;
-            cout<<"expense IdUser =              "<<expenses[i].getIdUser()<<endl;
+            //cout<<"expense IdFinancialData =     "<<expenses[i].getIdFinancialData()<<endl;
+            //cout<<"expense IdUser =              "<<expenses[i].getIdUser()<<endl;
             cout<<"expense Date =                "<<expenses[i].getDate()<<endl;
             cout<<"expense Description =         "<<expenses[i].getDescription()<<endl;
             cout<<"expense Amount =              "<<expenses[i].getAmount()<<endl;
-            cout<<"expense DateAsNumber =        "<<expenses[i].getDateAsNumber()<<endl;
+            //cout<<"expense DateAsNumber =        "<<expenses[i].getDateAsNumber()<<endl;
             cout<<"---"<<endl;
             sumOfExpenses = sumOfExpenses + expenses[i].getAmount();
         }

@@ -8,16 +8,9 @@
 </User>
 <User>
 <idUser>2</idUser>
-<name>Aleksandra</name>
-<surname>Kajkowska</surname>
-<login>ola</login>
-<password>kajkowska</password>
-</User>
-<User>
-<idUser>3</idUser>
 <name>Tomek</name>
 <surname>Sojer</surname>
 <login>tom</login>
-<password>red</password>
+<password>soj</password>
 </User>
 </USERS>

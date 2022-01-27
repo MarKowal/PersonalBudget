@@ -18,6 +18,7 @@ class ExpenseManager {
     FinancialData setDataOfNewExpense(int idOfLoggedUser);
     int getIdOfNewExpense();
     void changeDateIntoNumber();
+    bool checkIfFigureFrom0To9AsciiAndDot(string word);
 
 
 public:

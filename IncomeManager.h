@@ -19,6 +19,7 @@ class IncomeManager {
     FinancialData setDataOfNewIncome(int idOfLoggedUser);
     int getIdOfNewIncome();
     void changeDateIntoNumber();
+    bool checkIfFigureFrom0To9AsciiAndDot(string word);
 
 public:
     IncomeManager(int idOfLoggedUser);
